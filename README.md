@@ -9,9 +9,14 @@ Dit LaTeX sjabloon kan je gebruiken voor het opmaken van je bachelorproef toegep
 
 ## Aan de slag
 
-Om het sjabloon zelf te gebruiken, kan je de repository klonen of downloaden via de groene knop rechtsboven deze pagina. Steek een LaTeX-document altijd in een versiebeheersysteem!
+Om het sjabloon zelf te gebruiken, kan je de repository downloaden via de groene knop rechtsboven deze pagina. Steek een LaTeX-document altijd in een versiebeheersysteem!
 
-Zorg dat je LaTeX-editor voor het compileren *PdfLaTeX* gebruikt en voor het genereren van de bibliografie *Biber*.
+Stel je LaTeX-editor in om voor de compilatie van het pdf-bestand gebruik te maken van `latexmk` en als tool voor de bibliografie `biber`. Voorbeeld voor [TeXStudio](http://www.texstudio.org/):
+
+1. Ga naar Options > Configure TeXStudio
+2. Kies in de overzichtslijst links voor "Build"
+3. Selecteer voor "Default Compiler" in de dropdown list "Latexmk"
+4. Selecteer voor "Default Bibliography Tool" in de dropdown list "Biber"
 
 ## Vragen, fouten, verbeteringen
 
