@@ -7,9 +7,9 @@
 % TODO: Compileren document:
 % 1) Vervang ‘naam_voornaam’ in de bestandsnaam door je eigen naam, bv.
 %    buysse_jens_voorstel.tex
-% 2) pdflatex naam_voornaam_voorstel.tex (2 keer)
+% 2) latexmk -pdf naam_voornaam_voorstel.tex
 % 3) biber naam_voornaam_voorstel
-% 4) pdflatex naam_voornaam_voorstel.tex (1 keer)
+% 4) latexmk -pdf naam_voornaam_voorstel.tex (1 keer)
 
 \documentclass[fleqn,10pt]{voorstel}
 
@@ -18,7 +18,7 @@
 %------------------------------------------------------------------------------
 
 \JournalInfo{HoGent Bedrijf en Organisatie} % Journal information
-\Archive{Onderzoekstechnieken 2015 - 2016} % Additional notes (e.g. copyright, DOI, review/research article)
+\Archive{Onderzoekstechnieken 2016 - 2017} % Additional notes (e.g. copyright, DOI, review/research article)
 
 %---------- Titel & auteur ----------------------------------------------------
 
@@ -35,16 +35,7 @@
 
 %---------- Abstract ----------------------------------------------------------
 
-\Abstract{Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Wat hier zeker in moet vermeld worden:
-\begin{enumerate}
-  \item \textbf{Context}:  Waarom is dit werk belangrijk?
-  \item \textbf{Nood} :  Waarom moet dit onderzocht worden?
-  \item \textbf{Taak}:  Wat ga je (ongeveer) doen?
-  \item \textbf{Object}: Wat staat in dit document geschreven?
-  \item \textbf{Resultaat}: Wat verwacht je van je onderzoek?
-  \item \textbf{Conclusie}: Wat verwacht je van van de conclusies?
-  \item \textbf{Perspectief}: Wat zegt de toekomst voor dit werk?
-\end{enumerate}
+  \Abstract{Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Wat hier zeker in moet vermeld worden: \textbf{Context} (Waarom is dit werk belangrijk?); \textbf{Nood} (Waarom moet dit onderzocht worden?); \textbf{Taak} (Wat ga je (ongeveer) doen?); \textbf{Object} (Wat staat in dit document geschreven?); \textbf{Resultaat} (Wat verwacht je van je onderzoek?); \textbf{Conclusie} (Wat verwacht je van van de conclusies?); \textbf{Perspectief} (Wat zegt de toekomst voor dit werk?).
 
 Bij de sleutelwoorden geef je het onderzoeksdomein, samen met andere sleutelwoorden die je werk beschrijven.
 }
