@@ -4,21 +4,14 @@
 % Gebaseerd op LaTeX-sjabloon ‘Stylish Article’ (zie voorstel.cls)
 % Auteur: Jens Buysse, Bert Van Vreckem
 
-% TODO: Compileren document:
-% 1) Vervang ‘naam_voornaam’ in de bestandsnaam door je eigen naam, bv.
-%    buysse_jens_voorstel.tex
-% 2) latexmk -pdf naam_voornaam_voorstel.tex
-% 3) biber naam_voornaam_voorstel
-% 4) latexmk -pdf naam_voornaam_voorstel.tex (1 keer)
-
 \documentclass[fleqn,10pt]{voorstel}
 
 %------------------------------------------------------------------------------
 % Metadata over het artikel
 %------------------------------------------------------------------------------
 
-\JournalInfo{HoGent Bedrijf en Organisatie} % Journal information
-\Archive{Onderzoekstechnieken 2016 - 2017} % Additional notes (e.g. copyright, DOI, review/research article)
+\JournalInfo{HoGent Bedrijf en Organisatie}
+\Archive{Bachelorproef 2017 - 2018} % Of: Onderzoekstechnieken
 
 %---------- Titel & auteur ----------------------------------------------------
 
@@ -27,17 +20,21 @@
 \PaperType{Onderzoeksvoorstel Bachelorproef} % Type document
 
 % TODO: vul je eigen naam in als auteur, geef ook je emailadres mee!
-\Authors{Jens Buysse\textsuperscript{1}, Anita Bernard\textsuperscript{2}, Bert Van Vreckem\textsuperscript{3}} % Authors
+\Authors{Steven Stevens\textsuperscript{1}} % Authors
+\CoPromotor{Piet Pieters\textsuperscript{2} (Bedrijfsnaam)}
 \affiliation{\textbf{Contact:}
-  \textsuperscript{1} \href{mailto:jens.buysse@hogent.be}{jens.buysse@hogent.be};
-  \textsuperscript{2} \href{mailto:anita.bernard@hogent.be}{anita.bernard@hogent.be};
-  \textsuperscript{3} \href{mailto:bert.vanvreckem@hogent.be}{bert.vanvreckem@hogent.be}}
+  \textsuperscript{1} \href{mailto:steven.stevens.u1234@student.hogent.be}{steven.stevens.u1234@student.hogent.be};
+  \textsuperscript{2} \href{mailto:piet.pieters@acme.be}{piet.pieters@acme.be};
+}
+
 
 %---------- Abstract ----------------------------------------------------------
 
-  \Abstract{Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Wat hier zeker in moet vermeld worden: \textbf{Context} (Waarom is dit werk belangrijk?); \textbf{Nood} (Waarom moet dit onderzocht worden?); \textbf{Taak} (Wat ga je (ongeveer) doen?); \textbf{Object} (Wat staat in dit document geschreven?); \textbf{Resultaat} (Wat verwacht je van je onderzoek?); \textbf{Conclusie} (Wat verwacht je van van de conclusies?); \textbf{Perspectief} (Wat zegt de toekomst voor dit werk?).
+\Abstract{Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Wat hier zeker in moet vermeld worden: \textbf{Context} (Waarom is dit werk belangrijk?); \textbf{Nood} (Waarom moet dit onderzocht worden?); \textbf{Taak} (Wat ga je (ongeveer) doen?); \textbf{Object} (Wat staat in dit document geschreven?); \textbf{Resultaat} (Wat verwacht je van je onderzoek?); \textbf{Conclusie} (Wat verwacht je van van de conclusies?); \textbf{Perspectief} (Wat zegt de toekomst voor dit werk?).
 
 Bij de sleutelwoorden geef je het onderzoeksdomein, samen met andere sleutelwoorden die je werk beschrijven.
+
+Vergeet ook niet je co-promotor op te geven.
 }
 
 %---------- Onderzoeksdomein en sleutelwoorden --------------------------------
@@ -49,11 +46,12 @@ Bij de sleutelwoorden geef je het onderzoeksdomein, samen met andere sleutelwoor
 % - Mobiele applicatieontwikkeling
 % - Webapplicatieontwikkeling
 % - Applicatieontwikkeling (andere)
-% - Systeem- en netwerkbeheer
+% - Systeembeheer
+% - Netwerkbeheer
 % - Mainframe
 % - E-business
 % - Databanken en big data
-% - Machine learning en kunstmatige intelligentie
+% - Machineleertechnieken en kunstmatige intelligentie
 % - Andere (specifieer)
 %
 % De andere sleutelwoorden zijn vrij te kiezen
