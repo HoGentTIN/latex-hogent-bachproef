@@ -1,0 +1,40 @@
+%%=============================================================================
+%% Samenvatting
+%%=============================================================================
+
+% TODO: De "abstract" of samenvatting is een kernachtige (~ 1 blz. voor een
+% thesis) synthese van het document.
+%
+% Deze aspecten moeten zeker aan bod komen:
+% - Context: waarom is dit werk belangrijk?
+% - Nood: waarom moest dit onderzocht worden?
+% - Taak: wat heb je precies gedaan?
+% - Object: wat staat in dit document geschreven?
+% - Resultaat: wat was het resultaat?
+% - Conclusie: wat is/zijn de belangrijkste conclusie(s)?
+% - Perspectief: blijven er nog vragen open die in de toekomst nog kunnen
+%    onderzocht worden? Wat is een mogelijk vervolg voor jouw onderzoek?
+%
+% LET OP! Een samenvatting is GEEN voorwoord!
+
+%%---------- Nederlandse samenvatting -----------------------------------------
+%
+% TODO: Als je je bachelorproef in het Engels schrijft, moet je eerst een
+% Nederlandse samenvatting invoegen. Haal daarvoor onderstaande code uit
+% commentaar.
+% Wie zijn bachelorproef in het Nederlands schrijft, kan dit negeren, de inhoud
+% wordt niet in het document ingevoegd.
+
+\IfLanguageName{english}{%
+\selectlanguage{dutch}
+\chapter*{Samenvatting}
+\lipsum[1-4]
+\selectlanguage{english}
+}{}
+
+%%---------- Samenvatting -----------------------------------------------------
+% De samenvatting in de hoofdtaal van het document
+
+\chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
+
+\lipsum[1-4]

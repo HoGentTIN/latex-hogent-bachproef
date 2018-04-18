@@ -4,21 +4,14 @@
 % Gebaseerd op LaTeX-sjabloon ‘Stylish Article’ (zie voorstel.cls)
 % Auteur: Jens Buysse, Bert Van Vreckem
 
-% TODO: Compileren document:
-% 1) Vervang ‘naam_voornaam’ in de bestandsnaam door je eigen naam, bv.
-%    buysse_jens_voorstel.tex
-% 2) latexmk -pdf naam_voornaam_voorstel.tex
-% 3) biber naam_voornaam_voorstel
-% 4) latexmk -pdf naam_voornaam_voorstel.tex (1 keer)
-
 \documentclass[fleqn,10pt]{voorstel}
 
 %------------------------------------------------------------------------------
-% Metadata over het artikel
+% Metadata over het voorstel
 %------------------------------------------------------------------------------
 
-\JournalInfo{HoGent Bedrijf en Organisatie} % Journal information
-\Archive{Onderzoekstechnieken 2016 - 2017} % Additional notes (e.g. copyright, DOI, review/research article)
+\JournalInfo{HoGent Bedrijf en Organisatie}
+\Archive{Bachelorproef 2017 - 2018} % Of: Onderzoekstechnieken
 
 %---------- Titel & auteur ----------------------------------------------------
 
@@ -27,17 +20,20 @@
 \PaperType{Onderzoeksvoorstel Bachelorproef} % Type document
 
 % TODO: vul je eigen naam in als auteur, geef ook je emailadres mee!
-\Authors{Jens Buysse\textsuperscript{1}, Anita Bernard\textsuperscript{2}, Bert Van Vreckem\textsuperscript{3}} % Authors
+\Authors{Steven Stevens\textsuperscript{1}} % Authors
+\CoPromotor{Piet Pieters\textsuperscript{2} (Bedrijfsnaam)}
 \affiliation{\textbf{Contact:}
-  \textsuperscript{1} \href{mailto:jens.buysse@hogent.be}{jens.buysse@hogent.be};
-  \textsuperscript{2} \href{mailto:anita.bernard@hogent.be}{anita.bernard@hogent.be};
-  \textsuperscript{3} \href{mailto:bert.vanvreckem@hogent.be}{bert.vanvreckem@hogent.be}}
+  \textsuperscript{1} \href{mailto:steven.stevens.u1234@student.hogent.be}{steven.stevens.u1234@student.hogent.be};
+  \textsuperscript{2} \href{mailto:piet.pieters@acme.be}{piet.pieters@acme.be};
+}
 
 %---------- Abstract ----------------------------------------------------------
 
-  \Abstract{Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Wat hier zeker in moet vermeld worden: \textbf{Context} (Waarom is dit werk belangrijk?); \textbf{Nood} (Waarom moet dit onderzocht worden?); \textbf{Taak} (Wat ga je (ongeveer) doen?); \textbf{Object} (Wat staat in dit document geschreven?); \textbf{Resultaat} (Wat verwacht je van je onderzoek?); \textbf{Conclusie} (Wat verwacht je van van de conclusies?); \textbf{Perspectief} (Wat zegt de toekomst voor dit werk?).
+\Abstract{Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Wat hier zeker in moet vermeld worden: \textbf{Context} (Waarom is dit werk belangrijk?); \textbf{Nood} (Waarom moet dit onderzocht worden?); \textbf{Taak} (Wat ga je (ongeveer) doen?); \textbf{Object} (Wat staat in dit document geschreven?); \textbf{Resultaat} (Wat verwacht je van je onderzoek?); \textbf{Conclusie} (Wat verwacht je van van de conclusies?); \textbf{Perspectief} (Wat zegt de toekomst voor dit werk?).
 
 Bij de sleutelwoorden geef je het onderzoeksdomein, samen met andere sleutelwoorden die je werk beschrijven.
+
+Vergeet ook niet je co-promotor op te geven.
 }
 
 %---------- Onderzoeksdomein en sleutelwoorden --------------------------------
@@ -49,11 +45,12 @@ Bij de sleutelwoorden geef je het onderzoeksdomein, samen met andere sleutelwoor
 % - Mobiele applicatieontwikkeling
 % - Webapplicatieontwikkeling
 % - Applicatieontwikkeling (andere)
-% - Systeem- en netwerkbeheer
+% - Systeembeheer
+% - Netwerkbeheer
 % - Mainframe
 % - E-business
 % - Databanken en big data
-% - Machine learning en kunstmatige intelligentie
+% - Machineleertechnieken en kunstmatige intelligentie
 % - Andere (specifieer)
 %
 % De andere sleutelwoorden zijn vrij te kiezen
@@ -62,6 +59,7 @@ Bij de sleutelwoorden geef je het onderzoeksdomein, samen met andere sleutelwoor
 \newcommand{\keywordname}{Sleutelwoorden} % Defines the keywords heading name
 
 %---------- Titel, inhoud -----------------------------------------------------
+
 \begin{document}
 
 \flushbottom % Makes all text pages the same height
@@ -73,61 +71,14 @@ Bij de sleutelwoorden geef je het onderzoeksdomein, samen met andere sleutelwoor
 % Hoofdtekst
 %------------------------------------------------------------------------------
 
-%---------- Inleiding ---------------------------------------------------------
-
-\section{Introductie} % The \section*{} command stops section numbering
-\label{sec:introductie}
-
-Hier introduceer je werk. Je hoeft hier nog niet te technisch te gaan.
-
-Je beschrijft zeker:
-
-\begin{itemize}
-  \item de probleemstelling en context
-  \item de motivatie en relevantie voor het onderzoek
-  \item de doelstelling en onderzoeksvraag/-vragen
-\end{itemize}
-
-%---------- Stand van zaken ---------------------------------------------------
-
-\section{State-of-the-art}
-\label{sec:state-of-the-art}
-
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein. Dit kan bijvoorbeeld een literatuurstudie zijn. Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek? Wat is de relevantie met jouw onderzoek?
-
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Doll1954}! Denk zeker goed na welke werken je refereert en waarom.
-
-% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
-% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
-%   geen onderdeel is van de zin.
-% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
-%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
-%   ...'')
-
-Je mag gerust gebruik maken van subsecties in dit onderdeel.
-
-%---------- Methodologie ------------------------------------------------------
-\section{Methodologie}
-\label{sec:methodologie}
-
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor experimenten, vragenlijsten, simulaties? Je beschrijft ook al welke tools je denkt hiervoor te gebruiken of te ontwikkelen.
-
-%---------- Verwachte resultaten ----------------------------------------------
-\section{Verwachte resultaten}
-\label{sec:verwachte_resultaten}
-
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de stukken van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet hoe je je data gaat moeten structureren.
-
-%---------- Verwachte conclusies ----------------------------------------------
-\section{Verwachte conclusies}
-\label{sec:verwachte_conclusies}
-
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
+% De hoofdtekst van het voorstel zit in een apart bestand, zodat het makkelijk
+% kan opgenomen worden in de bijlagen van de bachelorproef zelf.
+\input{voorstel-inhoud}
 
 %------------------------------------------------------------------------------
 % Referentielijst
 %------------------------------------------------------------------------------
-% TODO: de gerefereerde werken moeten in BibTeX-bestand ``biblio.bib''
+% TODO: de gerefereerde werken moeten in BibTeX-bestand ``voorstel.bib''
 % voorkomen. Gebruik JabRef om je bibliografie bij te houden en vergeet niet
 % om compatibiliteit met Biber/BibLaTeX aan te zetten (File > Switch to
 % BibLaTeX mode)

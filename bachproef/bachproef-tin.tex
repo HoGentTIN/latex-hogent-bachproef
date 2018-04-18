@@ -47,9 +47,10 @@
 \begin{document}
 
 %---------- Taalselectie ------------------------------------------------------
-%% Als je je bachelorproef in het Engels schrijft, haal dan onderstaande regel
-%% uit commentaar. Let op: de tekst op de voorkaft blijft in het Nederlands, en
-%% dat is ook de bedoeling!
+% Als je je bachelorproef in het Engels schrijft, haal dan onderstaande regel
+% uit commentaar. Let op: de tekst op de voorkaft blijft in het Nederlands, en
+% dat is ook de bedoeling!
+
 %\selectlanguage{english}
 
 %---------- Titelblad ---------------------------------------------------------
@@ -57,8 +58,8 @@
 
 %---------- Samenvatting, voorwoord -------------------------------------------
 \usechapterimagefalse
-\input{samenvatting}
 \input{voorwoord}
+\input{samenvatting}
 
 %---------- Inhoudstafel ------------------------------------------------------
 \pagestyle{empty} % No headers
@@ -66,32 +67,58 @@
 \cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
 \pagestyle{fancy} % Print headers again
 
-%---------- Lijst afkortingen, termen -----------------------------------------
-%% Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
-%% hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
+%---------- Lijst figuren, afkortingen, ... -----------------------------------
+
+% Indien gewenst kan je hier een lijst van figuren/tabellen opgeven. Geef in
+% dat geval je figuren/tabellen altijd een korte beschrijving:
+%
+%  \caption[korte beschrijving]{uitgebreide beschrijving}
+
+\listoffigures
+\listoftables
+
+% Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
+% hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
+% https://www.sharelatex.com/learn/Glossaries
 
 %%---------- Kern -------------------------------------------------------------
 
 \input{inleiding}
+\input{standvanzaken}
 \input{methodologie}
 
-%% Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
-%% vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
-%% elke fase in je onderzoek in een apart hoofdstuk bespreken.
+% Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
+% vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
+% elke fase in je onderzoek in een apart hoofdstuk bespreken.
 
-%\input{}
-%\input{}
+%\input{...}
+%\input{...}
 %...
 
 \input{conclusie}
 
-%%---------- Back matter ------------------------------------------------------
+%%=============================================================================
+%% Bijlagen
+%%=============================================================================
 
-\printbibliography
-\addcontentsline{toc}{chapter}{\textcolor{maincolor}{\IfLanguageName{dutch}{Bibliografie}{Bibliography}}}
+\appendix
 
+%%---------- Onderzoeksvoorstel -----------------------------------------------
 
-\listoffigures
-\listoftables
+\chapter{Onderzoeksvoorstel}
+
+Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat vooraf werd beoordeeld door de promotor. Dat voorstel is opgenomen in deze bijlage.
+
+% Verwijzing naar het bestand met de inhoud van het onderzoeksvoorstel
+\input{../voorstel/voorstel-inhoud}
+
+%%---------- Andere bijlagen --------------------------------------------------
+% TODO: Voeg hier eventuele andere bijlagen toe
+%\input{...}
+
+%%---------- Referentielijst --------------------------------------------------
+
+\printbibliography[heading=bibintoc]
+%\addcontentsline{toc}{chapter}{\textcolor{maincolor}{\IfLanguageName{dutch}{Bibliografie}{Bibliography}}}
 
 \end{document}
