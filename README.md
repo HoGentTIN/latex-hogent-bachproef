@@ -35,6 +35,7 @@ Volgende personen hebben bijgedragen aan deze sjablonen:
 
 - Bert Van Vreckem
 - Jens Buysse
+- Chantal Teerlinck
 - Jeroen Maelbrancke
 - Matts Devriendt
 - Niels Corneille
