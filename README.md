@@ -8,8 +8,6 @@ Deze repository bevat LaTeX sjablonen voor gebruik bij het opmaken van je bachel
 
 Het voorblad van het bachelorproefsjabloon is conform aan datgene dat door de [scriptie-tool](https://scriptie.hogent.be/) wordt gegenereerd.
 
-Het bachelorproefsjabloon is voorzien op tekst in hetzij Nederlands, hetzij Engels
-
 ## Aan de slag
 
 Om deze sjablonen zelf te gebruiken, kan je de repository downloaden via de groene knop rechtsboven deze pagina. Maak daarna een repository voor jezelf aan. Steek een LaTeX-document altijd in een versiebeheersysteem!
@@ -21,6 +19,21 @@ Stel je LaTeX-editor in om voor de bibliografie `biber` te gebruiken ipv BibTeX.
 3. Selecteer voor "Default Bibliography Tool" in de dropdown list "Biber"
 
 Gebruik deze repository ook om andere artefacten/deelresultaten van je bachelorproef bij te houden, zoals nota's, ruwe resultaten, scripts/programmacode, enz. Gebruik bij voorkeur tekstgebaseerde bestandsformaten, bijvoorbeeld Markdown ipv Word-documenten of CSV (Comma Separated Values) ipv Excel-werkbladen.
+
+## Bachelorproef in het Engels
+
+Het bachelorproefsjabloon is voorzien op tekst in hetzij Nederlands, hetzij Engels. Wanneer je je bachelorproef in het Engels schrijft, moet je [lijn 54 van het hoofddocument](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/bachproef-tin.tex#L54) uit commentaar halen:
+
+```latex
+\selectlanguage{english}
+```
+
+Aandachtspunten:
+
+- Het voorblad blijft in het Nederlands (behalve je titel), en dit is ook de bedoeling
+- Je moet in dit geval ook een Nederlandse vertaling van je samenvatting voorzien. Het sjabloon houdt daar ook rekening mee:
+    - De samenvatting in de hoofdtaal van het document komt [op lijn 40 van het LaTeX-bestand](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L40)
+    - De Nederlandse vertaling ervan komt [op lijn 31](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L31)
 
 ## Vragen, fouten, verbeteringen
 
