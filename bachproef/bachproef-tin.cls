@@ -15,135 +15,140 @@
 %%   CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 %%=============================================================================
 
+\ProvidesClass{bachproef-tin}[2019/01/08 Bachelorproef HOGENT toegepaste informatica]
+\NeedsTeXFormat{LaTeX2e}
+
+\LoadClass[12pt,fleqn]{book}
+
 %%-----------------------------------------------------------------------------
 %% Packages
 %%-----------------------------------------------------------------------------
 
-\usepackage[top=3cm,bottom=3cm,left=3cm,right=3cm,headsep=10pt,a4paper]{geometry} % Page margins
-\usepackage[utf8]{inputenc}  % Accenten gebruiken in tekst (vb. é ipv \'e)
-\usepackage{amsfonts}        % AMS math packages: extra wiskundige
-\usepackage{amsmath}         %   symbolen (o.a. getallen-
-\usepackage{amssymb}         %   verzamelingen N, R, Z, Q, etc.)
-\usepackage[english,dutch]{babel}    % Taalinstellingen: woordsplitsingen,
-                             %  commando's voor speciale karakters
-                             %  ("dutch" voor NL)
-\usepackage{iflang}
-\usepackage{eurosym}         % Euro-symbool €
-\usepackage{geometry}
-\usepackage{graphicx}        % Invoegen van tekeningen
+\RequirePackage[top=3cm,bottom=3cm,left=3cm,right=3cm,headsep=10pt,a4paper]{geometry} % Page margins
+\RequirePackage[utf8]{inputenc}  % Accenten gebruiken in tekst (vb. é ipv \'e)
+\RequirePackage{amsfonts}        % AMS math packages: extra wiskundige
+\RequirePackage{amsmath}         %   symbolen (o.a. getallen-
+\RequirePackage{amssymb}         %   verzamelingen N, R, Z, Q, etc.)
+\RequirePackage[english,dutch]{babel}    % Taalinstellingen: woordsplitsingen,
+%  commando's voor speciale karakters
+%  ("dutch" voor NL)
+\RequirePackage{iflang}
+\RequirePackage{eurosym}         % Euro-symbool €
+\RequirePackage{geometry}
+\RequirePackage{graphicx}        % Invoegen van tekeningen
 \graphicspath{{img/}}       % Specifies the directory where pictures are stored
-\usepackage{tikz}            % Required for drawing custom shapes
-\usepackage[pdftex,bookmarks=true]{hyperref}
-                             % PDF krijgt klikbare links & verwijzingen,
-                             %  inhoudstafel
-\usepackage{enumitem}        % Customize lists
+\RequirePackage{tikz}            % Required for drawing custom shapes
+\RequirePackage[pdftex,bookmarks=true]{hyperref}
+% PDF krijgt klikbare links & verwijzingen,
+%  inhoudstafel
+\RequirePackage{enumitem}        % Customize lists
 \setlist{nolistsep}         % Reduce spacing between list items
-\usepackage{listings}        % Broncode mooi opmaken
-\usepackage{multirow}        % Tekst over verschillende cellen in tabellen
-\usepackage{rotating}        % Tabellen en figuren roteren
+\RequirePackage{listings}        % Broncode mooi opmaken
+\RequirePackage{multirow}        % Tekst over verschillende cellen in tabellen
+\RequirePackage{rotating}        % Tabellen en figuren roteren
 
-\usepackage{booktabs}        % Required for nicer horizontal rules in tables
+\RequirePackage{booktabs}        % Required for nicer horizontal rules in tables
 
-\usepackage{xcolor}          % Required for specifying colors by name
+\RequirePackage{xcolor}          % Required for specifying colors by name
 \definecolor{maincolor}{RGB}{0,147,208} % Define the main color used for 
-                             % highlighting throughout the book
-                             % 0, 147, 208 = officiële kleur HoGent FBO
+% highlighting throughout the book
+% 0, 147, 208 = officiële kleur HoGent FBO
 
 % Paragraph style: no indent, add space between paragraphs
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
 
-\usepackage{etoolbox}
-\usepackage{titling} % Macros for title, author, etc
-\usepackage{lipsum}          % Voor vultekst (lorem ipsum)
+\RequirePackage{etoolbox}
+\RequirePackage{titling} % Macros for title, author, etc
+\RequirePackage{lipsum}          % Voor vultekst (lorem ipsum)
 
 %----------------------------------------------------------------------------------------
 %	FONTS
 %----------------------------------------------------------------------------------------
 
-\usepackage{avant} % Use the Avantgarde font for headings
-%\usepackage{times} % Use the Times font for headings
-\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
+\RequirePackage{avant} % Use the Avantgarde font for headings
+%\RequirePackage{times} % Use the Times font for headings
+\RequirePackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
 
-\usepackage{microtype} % Slightly tweak font spacing for aesthetics
-\usepackage[utf8]{inputenc} % Required for including letters with accents
-\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\RequirePackage{microtype} % Slightly tweak font spacing for aesthetics
+\RequirePackage[utf8]{inputenc} % Required for including letters with accents
+\RequirePackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 
 %------------------------------------------------------------------------------
 %	TITLE PAGE
 %------------------------------------------------------------------------------
 
 \newcommand{\inserttitlepage}{%
-\begin{titlepage}
-  \newgeometry{top=2cm,bottom=1.5cm,left=1.5cm,right=1.5cm}
-  \begin{center}
-
-    \begingroup
-    \rmfamily
-    \includegraphics[width=2.5cm]{img/HG-beeldmerk-woordmerk}\\[.5cm]
-    Faculteit Bedrijf en Organisatie\\[3cm]
-    \titel
-    \vfill
-    \student\\[3.5cm]
-    Scriptie voorgedragen tot het bekomen van de graad van\\professionele bachelor in de toegepaste informatica\\[2cm]
-    Promotor:\\
-    \promotor\\
-    \ifdefempty{\copromotor}{\vspace{2.5cm}}{Co-promotor:\\\copromotor\\[2.5cm]}
-    Instelling: \instelling\\[.5cm]
-    Academiejaar: \academiejaar\\[.5cm]
-    \ifcase \examenperiode \or Eerste \or Tweede \else Derde \fi examenperiode
-    \endgroup
-
-  \end{center}
-  \restoregeometry
-\end{titlepage}
+  \begin{titlepage}
+    \newgeometry{top=2cm,bottom=1.5cm,left=1.5cm,right=1.5cm}
+    \begin{center}
+      
+      \begingroup
+      \rmfamily
+      \includegraphics[width=2.5cm]{img/HG-beeldmerk-woordmerk}\\[.5cm]
+      Faculteit Bedrijf en Organisatie\\[3cm]
+      \titel
+      \vfill
+      \student\\[3.5cm]
+      Scriptie voorgedragen tot het bekomen van de graad van\\professionele bachelor in de toegepaste informatica\\[2cm]
+      Promotor:\\
+      \promotor\\
+      \ifdefempty{\copromotor}{\vspace{2.5cm}}{Co-promotor:\\\copromotor\\[2.5cm]}
+      Instelling: \instelling\\[.5cm]
+      Academiejaar: \academiejaar\\[.5cm]
+      \ifcase \examenperiode \or Eerste \or Tweede \else Derde \fi examenperiode
+      \endgroup
+      
+    \end{center}
+    \restoregeometry
+  \end{titlepage}
   \emptypage
-\begin{titlepage}
-  \newgeometry{top=5.35cm,bottom=1.5cm,left=1.5cm,right=1.5cm}
-  \begin{center}
-
-    \begingroup
-    \rmfamily
-    \IfLanguageName{dutch}{Faculteit Bedrijf en Organisatie}{Faculty of Business and Information Management}\\[3cm]
-    \titel
-    \vfill
-    \student\\[3.5cm]
-    \IfLanguageName{dutch}{Scriptie voorgedragen tot het bekomen van de graad van\\professionele bachelor in de toegepaste informatica}{Thesis submitted in partial fulfilment of the requirements for the degree of\\professional bachelor of applied computer science}\\[2cm]
-    Promotor:\\
-    \promotor\\
-    \ifdefempty{\copromotor}{\vspace{2.5cm}}{Co-promotor:\\\copromotor\\[2.5cm]}
-    \IfLanguageName{dutch}{Instelling}{Institution}: \instelling\\[.5cm]
-    \IfLanguageName{dutch}{Academiejaar}{Academic year}: \academiejaar\\[.5cm]
-    \IfLanguageName{dutch}{%
-    \ifcase \examenperiode \or Eerste \or Tweede \else Derde \fi examenperiode}{%
-    \ifcase \examenperiode \or First \or Second \else Third \fi examination period}
-    \endgroup
-
-  \end{center}
-  \restoregeometry
-\end{titlepage}
+  \begin{titlepage}
+    \newgeometry{top=5.35cm,bottom=1.5cm,left=1.5cm,right=1.5cm}
+    \begin{center}
+      
+      \begingroup
+      \rmfamily
+      \IfLanguageName{dutch}{Faculteit Bedrijf en Organisatie}{Faculty of Business and Information Management}\\[3cm]
+      \titel
+      \vfill
+      \student\\[3.5cm]
+      \IfLanguageName{dutch}{Scriptie voorgedragen tot het bekomen van de graad van\\professionele bachelor in de toegepaste informatica}{Thesis submitted in partial fulfilment of the requirements for the degree of\\professional bachelor of applied computer science}\\[2cm]
+      Promotor:\\
+      \promotor\\
+      \ifdefempty{\copromotor}{\vspace{2.5cm}}{Co-promotor:\\\copromotor\\[2.5cm]}
+      \IfLanguageName{dutch}{Instelling}{Institution}: \instelling\\[.5cm]
+      \IfLanguageName{dutch}{Academiejaar}{Academic year}: \academiejaar\\[.5cm]
+      \IfLanguageName{dutch}{%
+        \ifcase \examenperiode \or Eerste \or Tweede \else Derde \fi examenperiode}{%
+        \ifcase \examenperiode \or First \or Second \else Third \fi examination period}
+      \endgroup
+      
+    \end{center}
+    \restoregeometry
+  \end{titlepage}
 }
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY AND INDEX
 %----------------------------------------------------------------------------------------
 
-\usepackage[style=apa,backend=biber]{biblatex}
-\usepackage{csquotes}
+\RequirePackage[style=apa,backend=biber]{biblatex}
+\RequirePackage{csquotes}
 \DeclareLanguageMapping{dutch}{dutch-apa}
 \addbibresource{bachproef-tin.bib} % BibTeX bibliography file
 \addbibresource{../voorstel/voorstel.bib}
 \defbibheading{bibempty}{}
 
-\usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
-\usepackage{makeidx} % Required to make an index
+\RequirePackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
+\RequirePackage{makeidx} % Required to make an index
 \makeindex % Tells LaTeX to create the files required for indexing
 
 %----------------------------------------------------------------------------------------
 %	MAIN TABLE OF CONTENTS
 %----------------------------------------------------------------------------------------
 
-\usepackage{titletoc} % Required for manipulating the table of contents
+\RequirePackage{titletoc} % Required for manipulating the table of contents
 
 \contentsmargin{0cm} % Removes the default margin
 
@@ -222,7 +227,7 @@
 %	PAGE HEADERS
 %----------------------------------------------------------------------------------------
 
-\usepackage{fancyhdr} % Required for header and footer configuration
+\RequirePackage{fancyhdr} % Required for header and footer configuration
 
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Chapter text font settings
@@ -238,18 +243,18 @@
 % Removes the header from odd empty pages at the end of chapters
 \makeatletter
 \renewcommand{\cleardoublepage}{
-\clearpage\ifodd\c@page\else
-\hbox{}
-\vspace*{\fill}
-\thispagestyle{empty}
-\newpage
-\fi}
+  \clearpage\ifodd\c@page\else
+  \hbox{}
+  \vspace*{\fill}
+  \thispagestyle{empty}
+  \newpage
+  \fi}
 
 %----------------------------------------------------------------------------------------
 %	THEOREM STYLES
 %----------------------------------------------------------------------------------------
 
-\usepackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
+\RequirePackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
 
 \newcommand{\intoo}[2]{\mathopen{]}#1\,;#2\mathclose{[}}
 \newcommand{\ud}{\mathop{\mathrm{{}d}}\mathopen{}}
@@ -266,7 +271,7 @@
 {\;}% Punctuation after theorem head
 {0.25em}% Space after theorem head
 {\small\sffamily\color{maincolor}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
-\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
 \renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
 
 \newtheoremstyle{blacknumex}% Theorem style name
@@ -278,7 +283,7 @@
 {\;}% Punctuation after theorem head
 {0.25em}% Space after theorem head
 {\small\sffamily{\tiny\ensuremath{\blacksquare}}\nobreakspace\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
-\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
 
 \newtheoremstyle{blacknumbox} % Theorem style name
 {0pt}% Space above
@@ -289,7 +294,7 @@
 {\;}% Punctuation after theorem head
 {0.25em}% Space after theorem head
 {\small\sffamily\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
-\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
 
 % Non-boxed/non-framed environments
 \newtheoremstyle{maincolornum}% % Theorem style name
@@ -301,7 +306,7 @@
 {\;}% Punctuation after theorem head
 {0.25em}% Space after theorem head
 {\small\sffamily\color{maincolor}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
-\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
 \renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
 \makeatother
 
@@ -401,12 +406,12 @@ innerbottommargin=5pt]{cBox}
 %----------------------------------------------------------------------------------------
 
 \newenvironment{remark}{\par\vspace{10pt}\small % Vertical white space above the remark and smaller font size
-\begin{list}{}{
-\leftmargin=35pt % Indentation on the left
-\rightmargin=25pt}\item\ignorespaces % Indentation on the right
-\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
-\node[draw=maincolor!60,line width=1pt,circle,fill=maincolor!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{maincolor}{R}};\end{tikzpicture}} % Orange R in a circle
-\advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
+  \begin{list}{}{
+      \leftmargin=35pt % Indentation on the left
+      \rightmargin=25pt}\item\ignorespaces % Indentation on the right
+    \makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+      \node[draw=maincolor!60,line width=1pt,circle,fill=maincolor!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{maincolor}{R}};\end{tikzpicture}} % Orange R in a circle
+    \advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
 
 %----------------------------------------------------------------------------------------
 %	SECTION NUMBERING IN THE MARGIN
@@ -415,21 +420,21 @@ innerbottommargin=5pt]{cBox}
 \makeatletter
 \renewcommand{\@seccntformat}[1]{\llap{\textcolor{maincolor}{\csname the#1\endcsname}\hspace{1em}}}
 \renewcommand{\section}{\@startsection{section}{1}{\z@}
-{-4ex \@plus -1ex \@minus -.4ex}
-{1ex \@plus.2ex }
-{\normalfont\large\sffamily\bfseries}}
+  {-4ex \@plus -1ex \@minus -.4ex}
+  {1ex \@plus.2ex }
+  {\normalfont\large\sffamily\bfseries}}
 \renewcommand{\subsection}{\@startsection {subsection}{2}{\z@}
-{-3ex \@plus -0.1ex \@minus -.4ex}
-{0.5ex \@plus.2ex }
-{\normalfont\sffamily\bfseries}}
+  {-3ex \@plus -0.1ex \@minus -.4ex}
+  {0.5ex \@plus.2ex }
+  {\normalfont\sffamily\bfseries}}
 \renewcommand{\subsubsection}{\@startsection {subsubsection}{3}{\z@}
-{-2ex \@plus -0.1ex \@minus -.2ex}
-{.2ex \@plus.2ex }
-{\normalfont\small\sffamily\bfseries}}
+  {-2ex \@plus -0.1ex \@minus -.2ex}
+  {.2ex \@plus.2ex }
+  {\normalfont\small\sffamily\bfseries}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}
-{-2ex \@plus-.2ex \@minus .2ex}
-{.1ex}
-{\normalfont\small\sffamily\bfseries}}
+  {-2ex \@plus-.2ex \@minus .2ex}
+  {.1ex}
+  {\normalfont\small\sffamily\bfseries}}
 
 %----------------------------------------------------------------------------------------
 %	PART HEADINGS
@@ -437,13 +442,13 @@ innerbottommargin=5pt]{cBox}
 
 % numbered part in the table of contents
 \newcommand{\@mypartnumtocformat}[2]{%
-\setlength\fboxsep{0pt}%
-\noindent\colorbox{maincolor!20}{\strut\parbox[c][.7cm]{\ecart}{\color{maincolor!70}\Large\sffamily\bfseries\centering#1}}\hskip\esp\colorbox{maincolor!40}{\strut\parbox[c][.7cm]{\linewidth-\ecart-\esp}{\Large\sffamily\centering#2}}}%
+  \setlength\fboxsep{0pt}%
+  \noindent\colorbox{maincolor!20}{\strut\parbox[c][.7cm]{\ecart}{\color{maincolor!70}\Large\sffamily\bfseries\centering#1}}\hskip\esp\colorbox{maincolor!40}{\strut\parbox[c][.7cm]{\linewidth-\ecart-\esp}{\Large\sffamily\centering#2}}}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % unnumbered part in the table of contents
 \newcommand{\@myparttocformat}[1]{%
-\setlength\fboxsep{0pt}%
-\noindent\colorbox{maincolor!40}{\strut\parbox[c][.7cm]{\linewidth}{\Large\sffamily\centering#1}}}%
+  \setlength\fboxsep{0pt}%
+  \noindent\colorbox{maincolor!40}{\strut\parbox[c][.7cm]{\linewidth}{\Large\sffamily\centering#1}}}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newlength\esp
 \setlength\esp{4pt}
@@ -452,39 +457,39 @@ innerbottommargin=5pt]{cBox}
 \newcommand{\thepartimage}{}%
 \newcommand{\partimage}[1]{\renewcommand{\thepartimage}{#1}}%
 \def\@part[#1]#2{%
-\ifnum \c@secnumdepth >-2\relax%
-\refstepcounter{part}%
-\addcontentsline{toc}{part}{\texorpdfstring{\protect\@mypartnumtocformat{\thepart}{#1}}{\partname~\thepart\ ---\ #1}}
-\else%
-\addcontentsline{toc}{part}{\texorpdfstring{\protect\@myparttocformat{#1}}{#1}}%
-\fi%
-\startcontents%
-\markboth{}{}%
-{\thispagestyle{empty}%
-\begin{tikzpicture}[remember picture,overlay]%
-\node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%
-\fill[maincolor!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
-\node[anchor=north] at (4cm,-3.25cm){\color{maincolor!40}\fontsize{220}{100}\sffamily\bfseries\@Roman\c@part};
-\node[anchor=south east] at (\paperwidth-1cm,-\paperheight+1cm){\parbox[t][][t]{8.5cm}{
-\printcontents{l}{0}{\setcounter{tocdepth}{1}}%
-}};
-\node[anchor=north east] at (\paperwidth-1.5cm,-3.25cm){\parbox[t][][t]{15cm}{\strut\raggedleft\color{white}\fontsize{30}{30}\sffamily\bfseries#2}};
-\end{tikzpicture}};
+  \ifnum \c@secnumdepth >-2\relax%
+  \refstepcounter{part}%
+  \addcontentsline{toc}{part}{\texorpdfstring{\protect\@mypartnumtocformat{\thepart}{#1}}{\partname~\thepart\ ---\ #1}}
+  \else%
+  \addcontentsline{toc}{part}{\texorpdfstring{\protect\@myparttocformat{#1}}{#1}}%
+  \fi%
+  \startcontents%
+  \markboth{}{}%
+  {\thispagestyle{empty}%
+    \begin{tikzpicture}[remember picture,overlay]%
+    \node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%
+      \fill[maincolor!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
+      \node[anchor=north] at (4cm,-3.25cm){\color{maincolor!40}\fontsize{220}{100}\sffamily\bfseries\@Roman\c@part};
+      \node[anchor=south east] at (\paperwidth-1cm,-\paperheight+1cm){\parbox[t][][t]{8.5cm}{
+          \printcontents{l}{0}{\setcounter{tocdepth}{1}}%
+      }};
+      \node[anchor=north east] at (\paperwidth-1.5cm,-3.25cm){\parbox[t][][t]{15cm}{\strut\raggedleft\color{white}\fontsize{30}{30}\sffamily\bfseries#2}};
+      \end{tikzpicture}};
 \end{tikzpicture}}%
 \@endpart}
 \def\@spart#1{%
 \startcontents%
 \phantomsection
 {\thispagestyle{empty}%
-\begin{tikzpicture}[remember picture,overlay]%
-\node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%
-\fill[maincolor!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
-\node[anchor=north east] at (\paperwidth-1.5cm,-3.25cm){\parbox[t][][t]{15cm}{\strut\raggedleft\color{white}\fontsize{30}{30}\sffamily\bfseries#1}};
-\end{tikzpicture}};
+  \begin{tikzpicture}[remember picture,overlay]%
+  \node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%
+    \fill[maincolor!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
+    \node[anchor=north east] at (\paperwidth-1.5cm,-3.25cm){\parbox[t][][t]{15cm}{\strut\raggedleft\color{white}\fontsize{30}{30}\sffamily\bfseries#1}};
+    \end{tikzpicture}};
 \end{tikzpicture}}
 \addcontentsline{toc}{part}{\texorpdfstring{%
-\setlength\fboxsep{0pt}%
-\noindent\protect\colorbox{maincolor!40}{\strut\protect\parbox[c][.7cm]{\linewidth}{\Large\sffamily\protect\centering #1\quad\mbox{}}}}{#1}}%
+  \setlength\fboxsep{0pt}%
+  \noindent\protect\colorbox{maincolor!40}{\strut\protect\parbox[c][.7cm]{\linewidth}{\Large\sffamily\protect\centering #1\quad\mbox{}}}}{#1}}%
 \@endpart}
 \def\@endpart{\vfil\newpage
 \if@twoside
@@ -514,10 +519,10 @@ innerbottommargin=5pt]{cBox}
 \begin{tikzpicture}[remember picture,overlay]
 \node at (current page.north west)
 {\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north west,inner sep=0pt] at (0,0) {\ifusechapterimage\includegraphics[width=\paperwidth]{\thechapterimage}\fi};
-\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=maincolor,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
-\draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}\thechapter. #1\strut};
-\end{tikzpicture}};
+  \node[anchor=north west,inner sep=0pt] at (0,0) {\ifusechapterimage\includegraphics[width=\paperwidth]{\thechapterimage}\fi};
+  \draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=maincolor,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+  \draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}\thechapter. #1\strut};
+  \end{tikzpicture}};
 \end{tikzpicture}
 \else
 \begin{tikzpicture}[remember picture,overlay]
@@ -548,9 +553,9 @@ innerbottommargin=5pt]{cBox}
 %	HYPERLINKS IN THE DOCUMENTS
 %----------------------------------------------------------------------------------------
 
-\usepackage{hyperref}
-\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor= maincolor,bookmarks=true,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
-\usepackage{bookmark}
+\RequirePackage{hyperref}
+\hypersetup{hidelinks,colorlinks=false,breaklinks=true,urlcolor=maincolor,bookmarksopen=false}
+\RequirePackage{bookmark}
 \bookmarksetup{
 open,
 numbered,
@@ -575,13 +580,13 @@ addtohook={%
 % Je kan dit aanpassen aan de taal die je zelf het meeste gebruikt in je
 % bachelorproef.
 \newcommand{\codefragment}[2]{ \lstset{%
-  language=java,
-  breaklines=true,
-  float=th,
-  caption={#2},
-  basicstyle=\scriptsize,
-  frame=single,
-  extendedchars=\true
+language=java,
+breaklines=true,
+float=th,
+caption={#2},
+basicstyle=\scriptsize,
+frame=single,
+extendedchars=\true
 }
 \lstinputlisting{#1}}
 
@@ -592,3 +597,5 @@ addtohook={%
 \mbox{}
 \newpage
 }
+
+\endinput
