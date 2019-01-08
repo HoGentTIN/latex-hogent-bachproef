@@ -20,6 +20,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{voorstel}
+
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \AtEndOfClass{\RequirePackage{microtype}}
@@ -249,3 +250,4 @@ justification=raggedright]{caption}
 \DeclareLanguageMapping{dutch}{dutch-apa}
 \addbibresource{voorstel.bib}
 
+\endinput
