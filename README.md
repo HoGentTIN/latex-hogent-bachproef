@@ -22,7 +22,7 @@ Gebruik deze repository ook om andere artefacten/deelresultaten van je bachelorp
 
 ## Bachelorproef in het Engels
 
-Het bachelorproefsjabloon is voorzien op tekst in hetzij Nederlands, hetzij Engels. Wanneer je je bachelorproef in het Engels schrijft, moet je [lijn 54 van het hoofddocument](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/bachproef-tin.tex#L54) uit commentaar halen:
+Het bachelorproefsjabloon is voorzien op tekst in hetzij Nederlands, hetzij Engels. Wanneer je je bachelorproef in het Engels schrijft, moet je [lijn 52 van het hoofddocument](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/bachproef-tin.tex#L52) uit commentaar halen:
 
 ```latex
 \selectlanguage{english}
