@@ -1,82 +1,115 @@
-%%=============================================================================
-%% LaTeX sjabloon voor de bachelorproef, HoGent Bedrijf en Organisatie
-%% Opleiding toegepaste informatica
-%%
-%% Structuur en algemene vormgeving. Meestal hoef je hier niets te wijzigen.
-%%
-%% Vormgeving gebaseerd op "The Legrand Orange Book", version 2.0 (9/2/15)
-%% door Mathias Legrand (legrand.mathias@gmail.com) met aanpassingen door
-%% Vel (vel@latextemplates.com). Het oorspronkelijke template is te vinden op
-%% http://www.LaTeXTemplates.com
-%%
-%% Aanpassingen voor HoGent toegepaste informatica: 
-%%   Bert Van Vreckem <bert.vanvreckem@hogent.be>
-%% Licentie: 
-%%   CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%%=============================================================================
+%===============================================================================
+% LaTeX Documentklasse voor de bachelorproef toegepaste informatica aan HOGENT.
+%
+% Deze klasse bepaalt de algemene vormgeving en structuur. In principe zijn er
+% hier geen wijzigingen nodig.
+%
+% Vormgeving gebaseerd op "The Legrand Orange Book", version 2.0 (9/2/15)
+% door Mathias Legrand (legrand.mathias@gmail.com) met aanpassingen door Vel
+% (vel@latextemplates.com). Het oorspronkelijke sjabloon is te vinden op
+% http://www.LaTeXTemplates.com
+%
+% Aanpassingen voor HOGENT toegepaste informatica:
+%   Bert Van Vreckem <bert.vanvreckem@hogent.be>
+% Licentie: 
+%   CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%===============================================================================
 
-\ProvidesClass{bachproef-tin}[2019/01/08 Bachelorproef HOGENT toegepaste informatica]
+\ProvidesClass{bachproef-tin}[2019/01/09 Bachelorproef HOGENT toegepaste informatica]
 \NeedsTeXFormat{LaTeX2e}
 
+% Overerven van de ``book''-klasse
 \LoadClass[12pt,fleqn]{book}
 
-%%-----------------------------------------------------------------------------
-%% Packages
-%%-----------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Algemene vormgeving, pagina-indeling
+%-------------------------------------------------------------------------------
 
-\RequirePackage[top=3cm,bottom=3cm,left=3cm,right=3cm,headsep=10pt,a4paper]{geometry} % Page margins
+% Paginagrootte en marges
+\RequirePackage[top=3cm,bottom=3cm,left=3cm,right=3cm,headsep=10pt,a4paper]{geometry}
+% Paragraafstijl
+\setlength{\parindent}{0em} % Eerste regel niet inspringen
+\setlength{\parskip}{1em}   % Ruimte tussen paragrafen laten
+\RequirePackage{enumitem}   % Vormgeving lijsten aanpassen
+\setlist{nolistsep}         % Geen ruimte tussen elementen in een lijst
+
+\RequirePackage{booktabs}   % Mooier opgemaakte tabellen
+\RequirePackage{multirow}   % Cellen in tabellen samenvoegen
+\RequirePackage{rotating}   % Tabellen en figuren roteren
+
+\RequirePackage{listings}   % Broncode mooi opmaken
+
+\RequirePackage{graphicx}   % Invoegen van afbeeldingen
+\graphicspath{{img/}}       % Map met in te voegen afbeeldingen
+\RequirePackage{tikz}       % Grafische taal voor maken van afbeeldingen
+
+% Macro om een leeg blad in te voegen
+\newcommand{\emptypage}{%
+  \newpage
+  \thispagestyle{empty}
+  \mbox{}
+  \newpage
+}
+
+%-------------------------------------------------------------------------------
+% Lettertypes, bestandscodering
+%-------------------------------------------------------------------------------
+
 \RequirePackage[utf8]{inputenc}  % Accenten gebruiken in tekst (vb. é ipv \'e)
+\RequirePackage[T1]{fontenc}     % Gebruik modernere 8-bit fonts met 256 tekens
 \RequirePackage{amsfonts}        % AMS math packages: extra wiskundige
 \RequirePackage{amsmath}         %   symbolen (o.a. getallen-
 \RequirePackage{amssymb}         %   verzamelingen N, R, Z, Q, etc.)
-\RequirePackage[english,dutch]{babel}    % Taalinstellingen: woordsplitsingen,
-%  commando's voor speciale karakters
-%  ("dutch" voor NL)
+
+\RequirePackage{avant}           % Gebruik Avantgarde voor titels
+\RequirePackage{mathptmx}        % Gebruik Adobe Times Roman als basislettertype
+                                 % met ondersteuning voor wiskundige symbolen
+
+\RequirePackage{microtype}       % Verbeteringen voor typografische perfectie
+
+%-------------------------------------------------------------------------------
+% Taal, lokalisatie
+%-------------------------------------------------------------------------------
+
+% Taalinstellingen: woordsplitsingen, commando's voor speciale karakters
+\RequirePackage[english,dutch]{babel}
 \RequirePackage{iflang}
 \RequirePackage{eurosym}         % Euro-symbool €
-\RequirePackage{geometry}
-\RequirePackage{graphicx}        % Invoegen van tekeningen
-\graphicspath{{img/}}       % Specifies the directory where pictures are stored
-\RequirePackage{tikz}            % Required for drawing custom shapes
-\RequirePackage[pdftex,bookmarks=true]{hyperref}
-% PDF krijgt klikbare links & verwijzingen,
-%  inhoudstafel
-\RequirePackage{enumitem}        % Customize lists
-\setlist{nolistsep}         % Reduce spacing between list items
-\RequirePackage{listings}        % Broncode mooi opmaken
-\RequirePackage{multirow}        % Tekst over verschillende cellen in tabellen
-\RequirePackage{rotating}        % Tabellen en figuren roteren
 
-\RequirePackage{booktabs}        % Required for nicer horizontal rules in tables
+%-------------------------------------------------------------------------------
+% Kleuren
+%-------------------------------------------------------------------------------
 
-\RequirePackage{xcolor}          % Required for specifying colors by name
-\definecolor{maincolor}{RGB}{0,147,208} % Define the main color used for 
-% highlighting throughout the book
+\RequirePackage{xcolor}
+
+% Bepaal de hoofdkleur doorheen heel het document
+\definecolor{maincolor}{RGB}{0,147,208}
 % 0, 147, 208 = officiële kleur HoGent FBO
 
-% Paragraph style: no indent, add space between paragraphs
-\setlength{\parindent}{0em}
-\setlength{\parskip}{1em}
+% HOGENT huisstijlkleuren
+% Bron: https://hnet.hogent.be/themas/communicatie/huisstijl-logo-s-en-sjablonen/kleurgebruik/
+\definecolor{hgdarkgreen}{RGB}{22,176,165}
+\definecolor{hgpink}{RGB}{241,157,160}
+\definecolor{hgochre}{RGB}{250,188,50}
+\definecolor{hgorange}{RGB}{239,135,103}
+\definecolor{hgpurple}{RGB}{187,144,189}
+\definecolor{hgblue}{RGB}{76,162,213}
+\definecolor{hglightgreen}{RGB}{165,202,114}
+\definecolor{hgbrown}{RGB}{216,176,131}
+\definecolor{hggrey}{RGB}{195,187,175}
+\definecolor{hgyellow}{RGB}{244,222,0}
 
-\RequirePackage{etoolbox}
+%-------------------------------------------------------------------------------
+% Voorpagina
+%-------------------------------------------------------------------------------
+
+% TODO: maak hier een aparte package van
+% de voorpagina van de bachelorproef ligt vast, maar voor andere documenten die
+% op deze documentklasse kunnen gebaseerd worden (verslag, studiewijzer, cursus,
+% enz.) is een andere voorpagina wenselijk. Door die uit de klasse te halen,
+% wordt die meer herbruikbaar.
+
 \RequirePackage{titling} % Macros for title, author, etc
-\RequirePackage{lipsum}          % Voor vultekst (lorem ipsum)
-
-%----------------------------------------------------------------------------------------
-%	FONTS
-%----------------------------------------------------------------------------------------
-
-\RequirePackage{avant} % Use the Avantgarde font for headings
-%\RequirePackage{times} % Use the Times font for headings
-\RequirePackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
-
-\RequirePackage{microtype} % Slightly tweak font spacing for aesthetics
-\RequirePackage[utf8]{inputenc} % Required for including letters with accents
-\RequirePackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
-
-%------------------------------------------------------------------------------
-%	TITLE PAGE
-%------------------------------------------------------------------------------
 
 \newcommand{\inserttitlepage}{%
   \begin{titlepage}
@@ -129,119 +162,115 @@
   \end{titlepage}
 }
 
-%----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY AND INDEX
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Inhoudstafel
+%-------------------------------------------------------------------------------
 
-\RequirePackage[style=apa,backend=biber]{biblatex}
-\RequirePackage{csquotes}
-\DeclareLanguageMapping{dutch}{dutch-apa}
-\addbibresource{bachproef-tin.bib} % BibTeX bibliography file
-\addbibresource{../voorstel/voorstel.bib}
-\defbibheading{bibempty}{}
+\RequirePackage{titletoc}
+\contentsmargin{0cm} % Verwijder de standaardmarge
 
-\RequirePackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
-\RequirePackage{makeidx} % Required to make an index
-\makeindex % Tells LaTeX to create the files required for indexing
+% Hieronder volgen de tekststijlen voor elk niveau in de inhoudstafel. De
+% structuur is telkens:
+% \titlecontents{NIVEAU}[INSPRINGEN]
+% {LETTERTYPE}
+% {NUMMERING}
+% {VULLING} -> vb. ruimte tussen titel en pagina opvullen met puntjes
+% {PAGINANR}
 
-%----------------------------------------------------------------------------------------
-%	MAIN TABLE OF CONTENTS
-%----------------------------------------------------------------------------------------
-
-\RequirePackage{titletoc} % Required for manipulating the table of contents
-
-\contentsmargin{0cm} % Removes the default margin
-
-% Part text styling
+% Tekststijl voor \part
 \titlecontents{part}[0cm]
 {\addvspace{20pt}\centering\large\bfseries}
 {}
 {}
 {}
 
-% Chapter text styling
-\titlecontents{chapter}[1.25cm] % Indentation
-{\addvspace{12pt}\large\sffamily\bfseries} % Spacing and font options for chapters
-{\color{maincolor!60}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{maincolor}} % Chapter number
+% Tekststijl voor \chapter
+\titlecontents{chapter}[1.25cm]
+{\addvspace{12pt}\large\sffamily\bfseries}
+{\color{maincolor!60}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{maincolor}}
 {\color{maincolor}}
-{\color{maincolor!60}\normalsize\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+{\color{maincolor!60}\normalsize\;\titlerule*[.5pc]{.}\;\thecontentspage}
 
-% Section text styling
-\titlecontents{section}[1.25cm] % Indentation
-{\addvspace{3pt}\sffamily\bfseries} % Spacing and font options for sections
-{\contentslabel[\thecontentslabel]{1.25cm}} % Section number
+% Tekststijl voor \section
+\titlecontents{section}[1.25cm]
+{\addvspace{3pt}\sffamily\bfseries}
+{\contentslabel[\thecontentslabel]{1.25cm}}
 {}
-{\hfill\color{black}\thecontentspage} % Page number
-[]
+{\hfill\color{black}\thecontentspage}
 
-% Subsection text styling
-\titlecontents{subsection}[1.25cm] % Indentation
-{\addvspace{1pt}\sffamily\small} % Spacing and font options for subsections
-{\contentslabel[\thecontentslabel]{1.25cm}} % Subsection number
+% Tekststijl voor \subsection
+\titlecontents{subsection}[1.25cm]
+{\addvspace{1pt}\sffamily\small}
+{\contentslabel[\thecontentslabel]{1.25cm}}
 {}
-{\ \titlerule*[.5pc]{.}\;\thecontentspage} % Page number
-[]
+{\ \titlerule*[.5pc]{.}\;\thecontentspage}
 
-% List of figures
+% Tekststijl voor lijst van figuren
 \titlecontents{figure}[0em]
 {\addvspace{-5pt}\sffamily}
 {\thecontentslabel\hspace*{1em}}
 {}
 {\ \titlerule*[.5pc]{.}\;\thecontentspage}
-[]
 
-% List of tables
+% Tekststijl voor lijst van tabellen
 \titlecontents{table}[0em]
 {\addvspace{-5pt}\sffamily}
 {\thecontentslabel\hspace*{1em}}
 {}
 {\ \titlerule*[.5pc]{.}\;\thecontentspage}
-[]
 
-%----------------------------------------------------------------------------------------
-%	MINI TABLE OF CONTENTS IN PART HEADS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Mini-inhoudstafel per hoofdstuk
+%-------------------------------------------------------------------------------
 
-% Chapter text styling
-\titlecontents{lchapter}[0em] % Indenting
-{\addvspace{15pt}\large\sffamily\bfseries} % Spacing and font options for chapters
-{\color{maincolor}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{maincolor}} % Chapter number
+% Tekststijl hoofdstuktitel
+\titlecontents{lchapter}[0em]
+{\addvspace{15pt}\large\sffamily\bfseries}
+{\color{maincolor}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{maincolor}}
 {}
-{\color{maincolor}\normalsize\sffamily\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+{\color{maincolor}\normalsize\sffamily\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage}
 
-% Section text styling
-\titlecontents{lsection}[0em] % Indenting
-{\sffamily\small} % Spacing and font options for sections
-{\contentslabel[\thecontentslabel]{1.25cm}} % Section number
-{}
-{}
-
-% Subsection text styling
-\titlecontents{lsubsection}[.5em] % Indentation
-{\normalfont\footnotesize\sffamily} % Font settings
-{}
+% Tekststijl \section
+\titlecontents{lsection}[0em]
+{\sffamily\small}
+{\contentslabel[\thecontentslabel]{1.25cm}}
 {}
 {}
 
-%----------------------------------------------------------------------------------------
-%	PAGE HEADERS
-%----------------------------------------------------------------------------------------
+% Tekststijl \subsection
+\titlecontents{lsubsection}[.5em]
+{\normalfont\footnotesize\sffamily}
+{}
+{}
+{}
 
-\RequirePackage{fancyhdr} % Required for header and footer configuration
+%-------------------------------------------------------------------------------
+% Paginahoofdingen
+%-------------------------------------------------------------------------------
+
+\RequirePackage{fancyhdr}
 
 \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Chapter text font settings
-\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Section text font settings
-\fancyhf{} \fancyhead[LE,RO]{\sffamily\normalsize\thepage} % Font setting for the page number in the header
-\fancyhead[LO]{\rightmark} % Print the nearest section name on the left side of odd pages
-\fancyhead[RE]{\leftmark} % Print the current chapter name on the right side of even pages
-\renewcommand{\headrulewidth}{0.5pt} % Width of the rule under the header
-\addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
-\renewcommand{\footrulewidth}{0pt} % Removes the rule in the footer
-\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}} % Style for when a plain pagestyle is specified
+% Tekststijl hoofdstuk
+\renewcommand{\chaptermark}[1]
+{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % 
+% Tekststijl sectie
+\renewcommand{\sectionmark}[1]
+{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}}
+% Tekststijl paginanummer
+\fancyhf{} \fancyhead[LE,RO]{\sffamily\normalsize\thepage}
 
-% Removes the header from odd empty pages at the end of chapters
-\makeatletter
+\fancyhead[LO]{\rightmark} % Oneven pagina's: sectietitel aan de linkerkant
+\fancyhead[RE]{\leftmark} % Even pagina's: Hoofdstuktitel aan de rechterkant
+\renewcommand{\headrulewidth}{0.5pt} % Lijn onder de hoofding
+\addtolength{\headheight}{2.5pt} % Meer ruimte voor hoofding
+
+\renewcommand{\footrulewidth}{0pt} % Geen lijn boven voettekst
+
+% Hoofdingstijl voor een ``plain'' pagina
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}}
+
+% Verwijder de hoofding van oneven pagina's aan het einde van een hoofstuk
 \renewcommand{\cleardoublepage}{
   \clearpage\ifodd\c@page\else
   \hbox{}
@@ -250,174 +279,216 @@
   \newpage
   \fi}
 
-%----------------------------------------------------------------------------------------
-%	THEOREM STYLES
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Stijl voor wiskundige stellingen & bewijzen/voorbeelden/...
+%-------------------------------------------------------------------------------
+% Er zijn vier ``theorem''-omgevingen gedefinieerd:
+%
+% - theorem (Stelling + bewijs)
+% - corollary (Gevolg + bewijs)
+% - definition (Definitie van een begrip)
+% - exercise (Opgave van een oefening)
+% - example (Voorbeeld)
+%
+% Elk heeft een specifieke stijl, hetzij met een kader, dikke rand links of
+% gekleurde achtergrond. Voorbeeld gebruik:
+%
+% \begin{theorem}[titel]
+%   hoofdtekst
+% \end{theorem}
 
-\RequirePackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
+\RequirePackage{amsthm}   % Stijlen voor theorem-omgeving aanpassen
+\RequirePackage{mdframed} % Tekstkaders
 
-\newcommand{\intoo}[2]{\mathopen{]}#1\,;#2\mathclose{[}}
-\newcommand{\ud}{\mathop{\mathrm{{}d}}\mathopen{}}
-\newcommand{\intff}[2]{\mathopen{[}#1\,;#2\mathclose{]}}
-\newtheorem{notation}{Notation}[chapter]
+%---------- Theorem (bewijs) ---------------------------------------------------
+% Een bewijs staat in een kader met de hoofdkleur van het document en een grijze
+% achtergrond.
 
-% Boxed/framed environments
-\newtheoremstyle{maincolornumbox}% % Theorem style name
-{0pt}% Space above
-{0pt}% Space below
-{\normalfont}% % Body font
-{}% Indent amount
-{\small\bf\sffamily\color{maincolor}}% % Theorem head font
-{\;}% Punctuation after theorem head
-{0.25em}% Space after theorem head
-{\small\sffamily\color{maincolor}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
-  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
-\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+% Lettertypestijl voor theorem-omgeving: ``Stelling x.y'' in het blauw, en de
+% titel in het vet.
+\newtheoremstyle{maincolornumbox}
+{12pt}         % Ruimte erboven
+{12pt}         % Ruimte eronder
+{\normalfont}  % Lettertype inhoud
+{}             % Inspringen
+{\small\bf\sffamily\color{maincolor}} % Lettertype ``hoofding''
+{\;}           % Leesteken tussen hoofding en ``body''
+{0.25em}       % Ruimte na hoofding
+{\small\sffamily\color{maincolor}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}  % Aanduiding, b.v. ``Stelling 2.1''
+  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optionele naam van de stelling (in vet)
 
-\newtheoremstyle{blacknumex}% Theorem style name
-{5pt}% Space above
-{5pt}% Space below
-{\normalfont}% Body font
-{} % Indent amount
-{\small\bf\sffamily}% Theorem head font
-{\;}% Punctuation after theorem head
-{0.25em}% Space after theorem head
-{\small\sffamily{\tiny\ensuremath{\blacksquare}}\nobreakspace\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
-  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
-
-\newtheoremstyle{blacknumbox} % Theorem style name
-{0pt}% Space above
-{0pt}% Space below
-{\normalfont}% Body font
-{}% Indent amount
-{\small\bf\sffamily}% Theorem head font
-{\;}% Punctuation after theorem head
-{0.25em}% Space after theorem head
-{\small\sffamily\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
-  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
-
-% Non-boxed/non-framed environments
-\newtheoremstyle{maincolornum}% % Theorem style name
-{5pt}% Space above
-{5pt}% Space below
-{\normalfont}% % Body font
-{}% Indent amount
-{\small\bf\sffamily\color{maincolor}}% % Theorem head font
-{\;}% Punctuation after theorem head
-{0.25em}% Space after theorem head
-{\small\sffamily\color{maincolor}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
-  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
-\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
-\makeatother
-
-% Defines the theorem text style for each type of theorem to one of the three styles above
-\newcounter{dummy}
-\numberwithin{dummy}{section}
 \theoremstyle{maincolornumbox}
-\newtheorem{theoremeT}[dummy]{Theorem}
-\newtheorem{problem}{Problem}[chapter]
-\newtheorem{exerciseT}{Exercise}[chapter]
-\theoremstyle{blacknumex}
-\newtheorem{exampleT}{Example}[chapter]
-\theoremstyle{blacknumbox}
-\newtheorem{vocabulary}{Vocabulary}[chapter]
-\newtheorem{definitionT}{Definition}[section]
-\newtheorem{corollaryT}[dummy]{Corollary}
-\theoremstyle{maincolornum}
-\newtheorem{proposition}[dummy]{Proposition}
+\newtheorem{theoremT}{\IfLanguageName{dutch}{Stelling}{Theorem}}[chapter]
 
-%----------------------------------------------------------------------------------------
-%	DEFINITION OF COLORED BOXES
-%----------------------------------------------------------------------------------------
-
-\RequirePackage[framemethod=default]{mdframed} % Required for creating the theorem, definition, exercise and corollary boxes
-
-% Theorem box
-\newmdenv[skipabove=7pt,
-skipbelow=7pt,
+% Kader rond de tekst
+\newmdenv[%
 backgroundcolor=black!5,
-linecolor=maincolor,
-innerleftmargin=5pt,
-innerrightmargin=5pt,
-innertopmargin=5pt,
-leftmargin=0cm,
-rightmargin=0cm,
-innerbottommargin=5pt]{tBox}
-
-% Exercise box
-\newmdenv[skipabove=7pt,
-skipbelow=7pt,
-rightline=false,
-leftline=true,
-topline=false,
-bottomline=false,
-backgroundcolor=maincolor!10,
-linecolor=maincolor,
-innerleftmargin=5pt,
-innerrightmargin=5pt,
-innertopmargin=5pt,
 innerbottommargin=5pt,
-leftmargin=0cm,
-rightmargin=0cm,
-linewidth=4pt]{eBox}
-
-% Definition box
-\newmdenv[skipabove=7pt,
-skipbelow=7pt,
-rightline=false,
-leftline=true,
-topline=false,
-bottomline=false,
-linecolor=maincolor,
-innerleftmargin=5pt,
-innerrightmargin=5pt,
-innertopmargin=0pt,
-leftmargin=0cm,
-rightmargin=0cm,
-linewidth=4pt,
-innerbottommargin=0pt]{dBox}
-
-% Corollary box
-\newmdenv[skipabove=7pt,
-skipbelow=7pt,
-rightline=false,
-leftline=true,
-topline=false,
-bottomline=false,
-linecolor=gray,
-backgroundcolor=black!5,
 innerleftmargin=5pt,
 innerrightmargin=5pt,
 innertopmargin=5pt,
 leftmargin=0cm,
+linecolor=maincolor,
 rightmargin=0cm,
+skipabove=12pt,
+skipbelow=7pt
+]{tBox}
+
+% Definitie theorem-omgeving, gebaseerd op de hierboven gedefinieerde stijlen
+\newenvironment{theorem}{\begin{tBox}\begin{theoremT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{theoremT}\end{tBox}}
+
+%---------- Corollary (gevolg) -------------------------------------------------
+% Een gevolg is gelijkaardig opgemaakt als een stelling, maar er wordt enkel
+% zwart gebruikt, niet de hoofdkleur
+
+% Lettertypestijl: ``Gevolg x.y'' in het zwart, de titel in het vet
+\newtheoremstyle{blacknumbox}
+{12pt}
+{12pt}
+{\normalfont}
+{}
+{\small\bf\sffamily}
+{\;}
+{0.25em}
+{\small\sffamily\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}
+  \thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}
+
+\theoremstyle{blacknumbox}
+\newtheorem{corollaryT}{\IfLanguageName{dutch}{Gevolg}{Corollary}}[chapter]
+
+% Randen rond de corollary-omgeving
+\newmdenv[%
+backgroundcolor=black!5,
+innerbottommargin=5pt,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+linecolor=black,
+rightmargin=0cm,
+skipabove=12pt,
+skipbelow=7pt
+]{corollaryBox}
+
+% Definitie corollary-omgeving, gebaseerd op de hierboven gedefinieerde stijlen
+\newenvironment{corollary}{\begin{corollaryBox}\begin{corollaryT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{corollaryT}\end{corollaryBox}}
+
+%---------- Definition (definitie) ---------------------------------------------
+% Een definitie heeft geen kader, maar een achtergrond gebaseerd op de
+% hoofdkleur en dikke rand links.
+
+% Randen rond de definitie-omgeving
+\newmdenv[%
+backgroundcolor=maincolor!10,
+bottomline=false,
+innerbottommargin=5pt,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftline=true,
+leftmargin=0cm,
+linecolor=maincolor,
 linewidth=4pt,
-innerbottommargin=5pt]{cBox}
+rightline=false,
+rightmargin=0cm,
+skipabove=7pt,
+skipbelow=7pt,
+topline=false
+]{defBox}
 
-% Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
-\newenvironment{theorem}{\begin{tBox}\begin{theoremeT}}{\end{theoremeT}\end{tBox}}
-\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{maincolor}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}
-\newenvironment{definition}{\begin{dBox}\begin{definitionT}}{\end{definitionT}\end{dBox}}
-\newenvironment{example}{\begin{exampleT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{exampleT}}
-\newenvironment{corollary}{\begin{cBox}\begin{corollaryT}}{\end{corollaryT}\end{cBox}}
+\theoremstyle{blacknumbox}
+\newtheorem{definitionT}{\IfLanguageName{dutch}{Definitie}{Definition}}[chapter]
 
-%----------------------------------------------------------------------------------------
-%	REMARK ENVIRONMENT
-%----------------------------------------------------------------------------------------
+% Definitie definition-omgeving, gebaseerd op de hierboven gedefinieerde stijlen
+\newenvironment{definition}{\begin{defBox}\begin{definitionT}}{\end{definitionT}\end{defBox}}
 
-\newenvironment{remark}{\par\vspace{10pt}\small % Vertical white space above the remark and smaller font size
-  \begin{list}{}{
-      \leftmargin=35pt % Indentation on the left
-      \rightmargin=25pt}\item\ignorespaces % Indentation on the right
-    \makebox[-2.5pt]{\begin{tikzpicture}[overlay]
-      \node[draw=maincolor!60,line width=1pt,circle,fill=maincolor!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{maincolor}{R}};\end{tikzpicture}} % Orange R in a circle
-    \advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
+%---------- Exercise (oefening) ------------------------------------------------
+% Een oefening heeft geen kader, maar een achtergrond gebaseerd op de
+% hoofdkleur en dikke rand links.
 
-%----------------------------------------------------------------------------------------
-%	SECTION NUMBERING IN THE MARGIN
-%----------------------------------------------------------------------------------------
+% We hergebruiken de stijl voor een Theorem: ``Oefening x.y'' in het blauw
+\theoremstyle{maincolornumbox}
+\newtheorem{exerciseT}{\IfLanguageName{dutch}{Oefening}{Exercise}}[chapter]
 
-\makeatletter
+% Randen rond de exercise-omgeving
+\newmdenv[%
+bottomline=false,
+innerbottommargin=5pt,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftline=true,
+leftmargin=0cm,
+linecolor=maincolor,
+linewidth=4pt,
+rightline=false,
+rightmargin=0cm,
+skipabove=7pt,
+skipbelow=7pt,
+topline=false
+]{exerciseBox}
+
+% Definitie exercise-omgeving, gebaseerd op de hierboven gedefinieerde stijlen
+\newenvironment{exercise}{\begin{exerciseBox}\begin{exerciseT}}{\end{exerciseT}\end{exerciseBox}}
+
+%---------- Example (voorbeeld) ------------------------------------------------
+% Een voorbeeld is opgemaakt zoals een oefening maar alles in het zwart.
+
+% We hergebruiken de stijl voor een Corollary (alle tekst in het zwart)
+\theoremstyle{blacknumbox}
+\newtheorem{exampleT}{\IfLanguageName{dutch}{Voorbeeld}{Example}}[chapter]
+
+% Randen rond de example-omgeving
+\newmdenv[%
+bottomline=false,
+innerbottommargin=5pt,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftline=true,
+leftmargin=0cm,
+linecolor=black,
+linewidth=4pt,
+rightline=false,
+rightmargin=0cm,
+skipabove=7pt,
+skipbelow=7pt,
+topline=false
+]{exampleBox}
+
+% Definitie example-omgeving, gebaseerd op de hierboven gedefinieerde stijlen
+\newenvironment{example}{\begin{exampleBox}\begin{exampleT}}{\end{exampleT}\end{exampleBox}}
+
+%-------------------------------------------------------------------------------
+% remark-omgeving
+%-------------------------------------------------------------------------------
+% Omgeving voor opmerkingen. Deze worden aangeduid door een cirkel links van
+% de tekst in de hoofdkleur, met daarin een letterteken. Standaard is dat de 
+% hoofdletter O van opmerking, maar je kan dit zelf aanpassen.
+%
+% Voorbeeld:                    Of met een gekozen letterteken (uitroepteken):
+% \begin{remark}                \begin{remark}[!]
+%   Tekst                         Tekst
+% \end{remark}                  \end{remark}
+
+\newenvironment{remark}[1][O]{%
+  \par\vspace{10pt}\small
+  \begin{list}{}{\leftmargin=35pt \rightmargin=25pt}
+    \item\ignorespaces
+    \makebox[-2.5pt]{%
+      \begin{tikzpicture}[overlay]
+        \node[draw=maincolor!60,line width=1pt,circle,fill=maincolor!25,
+              font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt]
+          at (-15pt,0pt) {\textcolor{maincolor}{#1}};
+      \end{tikzpicture}}
+    \advance\baselineskip -1pt}{%
+  \end{list}\vskip5pt
+}
+
+%-------------------------------------------------------------------------------
+% Sectienummering in de marges
+%-------------------------------------------------------------------------------
+
 \renewcommand{\@seccntformat}[1]{\llap{\textcolor{maincolor}{\csname the#1\endcsname}\hspace{1em}}}
 \renewcommand{\section}{\@startsection{section}{1}{\z@}
   {-4ex \@plus -1ex \@minus -.4ex}
@@ -436,10 +507,11 @@ innerbottommargin=5pt]{cBox}
   {.1ex}
   {\normalfont\small\sffamily\bfseries}}
 
-%----------------------------------------------------------------------------------------
-%	PART HEADINGS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Hoofdingen van delen (\part)
+%-------------------------------------------------------------------------------
 
+\RequirePackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
 % numbered part in the table of contents
 \newcommand{\@mypartnumtocformat}[2]{%
   \setlength\fboxsep{0pt}%
@@ -503,11 +575,16 @@ innerbottommargin=5pt]{cBox}
 \twocolumn
 \fi}
 
-%----------------------------------------------------------------------------------------
-%	CHAPTER HEADINGS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Opmaak hoofdstuktitels
+%-------------------------------------------------------------------------------
+% Je kan optioneel een afbeelding invoegen als achtergrond van de titel door de
+% boolean \usechapterimage in te stellen en de te gebruiken afbeelding op te
+% geven:
+%
+% \usechapterimagetrue
+% \chapterimage{background-image}
 
-% A switch to conditionally include a picture, implemented by  Christian Hupfer
 \newif\ifusechapterimage
 \usechapterimagetrue
 \newcommand{\thechapterimage}{}%
@@ -535,8 +612,6 @@ innerbottommargin=5pt]{cBox}
 \end{tikzpicture}
 \fi\fi\par\vspace*{270\p@}}}
 
-%-------------------------------------------
-
 \def\@makeschapterhead#1{%
 \begin{tikzpicture}[remember picture,overlay]
 \node at (current page.north west)
@@ -547,14 +622,14 @@ innerbottommargin=5pt]{cBox}
 \end{tikzpicture}};
 \end{tikzpicture}
 \par\vspace*{270\p@}}
-\makeatother
 
-%----------------------------------------------------------------------------------------
-%	HYPERLINKS IN THE DOCUMENTS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Hyperlinks
+%-------------------------------------------------------------------------------
 
 \RequirePackage{hyperref}
 \hypersetup{hidelinks,colorlinks=false,breaklinks=true,urlcolor=maincolor,bookmarksopen=false}
+
 \RequirePackage{bookmark}
 \bookmarksetup{
 open,
@@ -569,33 +644,47 @@ addtohook={%
 }
 }
 
-%----------------------------------------------------------------------------------------
-%	Java source code
-%----------------------------------------------------------------------------------------
-
-% Commando voor invoegen Java-broncodebestanden (dank aan Niels Corneille)
-% Gebruik:
-%   \codefragment{source/MijnKlasse.java}{Uitleg bij de code}
+%-------------------------------------------------------------------------------
+% Broncode
+%-------------------------------------------------------------------------------
+% Commando voor invoegen broncodebestanden (dank aan Niels Corneille). Het
+% neemt 3 verplichte parameters:
+% 1. programmeertaal
+% 2. pad naar broncodebestand
+% 3. bijschrijft met uitleg over de code
 %
-% Je kan dit aanpassen aan de taal die je zelf het meeste gebruikt in je
-% bachelorproef.
-\newcommand{\codefragment}[2]{ \lstset{%
-language=java,
+% Voorbeeld:
+%   \codefragment{java}{source/MijnKlasse.java}{Bijschrift met uitleg}
+%
+\newcommand{\codefragment}[3]{ \lstset{%
+language={#1},
 breaklines=true,
 float=th,
-caption={#2},
+caption={#3},
 basicstyle=\scriptsize,
 frame=single,
 extendedchars=\true
 }
-\lstinputlisting{#1}}
+\lstinputlisting{#2}}
 
-% Leeg blad
-\newcommand{\emptypage}{%
-\newpage
-\thispagestyle{empty}
-\mbox{}
-\newpage
-}
+%-------------------------------------------------------------------------------
+% Bibliografie en index
+%-------------------------------------------------------------------------------
+
+\RequirePackage[style=apa,backend=biber]{biblatex}
+\RequirePackage{csquotes}
+\DeclareLanguageMapping{dutch}{dutch-apa}
+\addbibresource{bachproef-tin.bib} % BibTeX bibliography file
+\addbibresource{../voorstel/voorstel.bib}
+\defbibheading{bibempty}{}
+
+\RequirePackage{makeidx} % Required to make an index
+\makeindex % Tells LaTeX to create the files required for indexing
+
+%-------------------------------------------------------------------------------
+% Andere packages
+%-------------------------------------------------------------------------------
+
+\RequirePackage{lipsum}          % Voor vultekst (lorem ipsum)
 
 \endinput
