@@ -62,7 +62,7 @@ right=2cm,%
 top=2.25cm,%
 bottom=2.25cm,%
 headheight=11pt,%
-letterpaper]{geometry}%
+a4paper]{geometry}%
 
 %----------------------------------------------------------------------
 %  FIGURES AND TABLES CAPTIONS
@@ -73,24 +73,6 @@ labelsep=period,%
 justification=raggedright]{caption}
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
-
-%----------------------------------------------------------------------
-%  PAGE HEADER
-%----------------------------------------------------------------------
-
-\RequirePackage{fancyhdr}  % Needed to define custom headers/footers
-\RequirePackage{lastpage}  % Number of pages in the document
-\pagestyle{fancy}          % Enables the custom headers/footers
-% Headers
-\lhead{\includegraphics[height=1.1cm]{FBO-NL.jpg}}%
-\chead{}%
-\rhead{\small\sffamily\bfseries\@PaperTitle\  --- \thepage/\pageref{LastPage}}
-% Footers
-\lfoot{}%
-\cfoot{}%
-\rfoot{}%
-\renewcommand{\headrulewidth}{0pt}% % No header rule
-\renewcommand{\footrulewidth}{0pt}% % No footer rule
 
 %----------------------------------------------------------------------
 %  SECTION/SUBSECTION/PARAGRAPH SET-UP
@@ -194,9 +176,7 @@ justification=raggedright]{caption}
 
 \newcommand{\PaperTitle}[1]{\def\@PaperTitle{#1}}
 \newcommand{\PaperType}[1]{\def\@PaperType{#1}}
-\newcommand{\Archive}[1]{\def\@Archive{#1}}
 \newcommand{\Authors}[1]{\def\@Authors{#1}}
-\newcommand{\JournalInfo}[1]{\def\@JournalInfo{#1}}
 \newcommand{\Abstract}[1]{\def\@Abstract{#1}}
 \newcommand{\Keywords}[1]{\def\@Keywords{#1}}
 \newcommand{\CoPromotor}[1]{\def\@CoPromotor{#1}}
@@ -208,8 +188,6 @@ justification=raggedright]{caption}
 \renewcommand{\@maketitle}{%
 \twocolumn[{%
 \thispagestyle{empty}%
-\vskip-36pt%
-{\raggedleft\small\sffamily\bfseries\@JournalInfo\\\@Archive\par}%
 \vskip20pt%
 {\raggedright\color{color1}\sffamily\bfseries\fontsize{20}{24}\selectfont \@PaperTitle\\}%
 {\raggedright\color{color1}\sffamily\bfseries\fontsize{13}{15.6}\selectfont \@PaperType\par}%
@@ -241,6 +219,24 @@ justification=raggedright]{caption}
 \vskip25pt%
 }]%
 }
+
+%----------------------------------------------------------------------
+%  PAGE HEADER
+%----------------------------------------------------------------------
+
+\RequirePackage{fancyhdr}  % Needed to define custom headers/footers
+\RequirePackage{lastpage}  % Number of pages in the document
+\pagestyle{fancy}          % Enables the custom headers/footers
+% Headers
+\lhead{}%
+\chead{}%
+\rhead{\small\sffamily\bfseries\@PaperTitle}
+% Footers
+\lfoot{\sffamily\small\bfseries\@PaperType}%
+\cfoot{\thepage/\pageref{LastPage}}%
+\rfoot{\includegraphics[height=1.1cm]{HOGENT_Logo_Pos_rgb.png}}%
+\renewcommand{\headrulewidth}{0pt}% % No header rule
+\renewcommand{\footrulewidth}{0pt}% % No footer rule
 
 %----------------------------------------------------------------------
 %  REFERENCES
