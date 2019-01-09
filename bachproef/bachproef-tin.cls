@@ -43,14 +43,6 @@
 \graphicspath{{img/}}       % Map met in te voegen afbeeldingen
 \RequirePackage{tikz}       % Grafische taal voor maken van afbeeldingen
 
-% Macro om een leeg blad in te voegen
-\newcommand{\emptypage}{%
-  \newpage
-  \thispagestyle{empty}
-  \mbox{}
-  \newpage
-}
-
 %-------------------------------------------------------------------------------
 % Lettertypes, bestandscodering
 %-------------------------------------------------------------------------------
@@ -98,69 +90,6 @@
 \definecolor{hgbrown}{RGB}{216,176,131}
 \definecolor{hggrey}{RGB}{195,187,175}
 \definecolor{hgyellow}{RGB}{244,222,0}
-
-%-------------------------------------------------------------------------------
-% Voorpagina
-%-------------------------------------------------------------------------------
-
-% TODO: maak hier een aparte package van
-% de voorpagina van de bachelorproef ligt vast, maar voor andere documenten die
-% op deze documentklasse kunnen gebaseerd worden (verslag, studiewijzer, cursus,
-% enz.) is een andere voorpagina wenselijk. Door die uit de klasse te halen,
-% wordt die meer herbruikbaar.
-
-\RequirePackage{titling} % Macros for title, author, etc
-
-\newcommand{\inserttitlepage}{%
-  \begin{titlepage}
-    \newgeometry{top=2cm,bottom=1.5cm,left=1.5cm,right=1.5cm}
-    \begin{center}
-      
-      \begingroup
-      \rmfamily
-      \includegraphics[width=2.5cm]{img/HG-beeldmerk-woordmerk}\\[.5cm]
-      Faculteit Bedrijf en Organisatie\\[3cm]
-      \titel
-      \vfill
-      \student\\[3.5cm]
-      Scriptie voorgedragen tot het bekomen van de graad van\\professionele bachelor in de toegepaste informatica\\[2cm]
-      Promotor:\\
-      \promotor\\
-      \ifdefempty{\copromotor}{\vspace{2.5cm}}{Co-promotor:\\\copromotor\\[2.5cm]}
-      Instelling: \instelling\\[.5cm]
-      Academiejaar: \academiejaar\\[.5cm]
-      \ifcase \examenperiode \or Eerste \or Tweede \else Derde \fi examenperiode
-      \endgroup
-      
-    \end{center}
-    \restoregeometry
-  \end{titlepage}
-  \emptypage
-  \begin{titlepage}
-    \newgeometry{top=5.35cm,bottom=1.5cm,left=1.5cm,right=1.5cm}
-    \begin{center}
-      
-      \begingroup
-      \rmfamily
-      \IfLanguageName{dutch}{Faculteit Bedrijf en Organisatie}{Faculty of Business and Information Management}\\[3cm]
-      \titel
-      \vfill
-      \student\\[3.5cm]
-      \IfLanguageName{dutch}{Scriptie voorgedragen tot het bekomen van de graad van\\professionele bachelor in de toegepaste informatica}{Thesis submitted in partial fulfilment of the requirements for the degree of\\professional bachelor of applied computer science}\\[2cm]
-      Promotor:\\
-      \promotor\\
-      \ifdefempty{\copromotor}{\vspace{2.5cm}}{Co-promotor:\\\copromotor\\[2.5cm]}
-      \IfLanguageName{dutch}{Instelling}{Institution}: \instelling\\[.5cm]
-      \IfLanguageName{dutch}{Academiejaar}{Academic year}: \academiejaar\\[.5cm]
-      \IfLanguageName{dutch}{%
-        \ifcase \examenperiode \or Eerste \or Tweede \else Derde \fi examenperiode}{%
-        \ifcase \examenperiode \or First \or Second \else Third \fi examination period}
-      \endgroup
-      
-    \end{center}
-    \restoregeometry
-  \end{titlepage}
-}
 
 %-------------------------------------------------------------------------------
 % Inhoudstafel
