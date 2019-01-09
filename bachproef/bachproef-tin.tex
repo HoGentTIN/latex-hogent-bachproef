@@ -1,11 +1,11 @@
-%%=============================================================================
-%% LaTeX sjabloon voor bachelorproef, HoGent Bedrijf en Organisatie
-%% Opleiding Toegepaste Informatica
-%%=============================================================================
+%===============================================================================
+% LaTeX sjabloon voor de bachelorproef toegepaste informatica aan HOGENT
+% Meer info op https://github.com/HoGentTIN/bachproef-latex-sjabloon
+%===============================================================================
 
 \documentclass{bachproef-tin}
 
-%%---------- Documenteigenschappen --------------------------------------------
+%%---------- Documenteigenschappen ---------------------------------------------
 % TODO: Vul dit aan met je eigen info:
 
 % Je eigen naam
@@ -38,52 +38,57 @@
 %  - tweede zit  = 3e examenperiode => 3
 \newcommand{\examenperiode}{2}
 
-%%=============================================================================
-%% Inhoud document
-%%=============================================================================
+%===============================================================================
+% Inhoud document
+%===============================================================================
 
 \begin{document}
 
-%---------- Taalselectie ------------------------------------------------------
+%---------- Taalselectie -------------------------------------------------------
 % Als je je bachelorproef in het Engels schrijft, haal dan onderstaande regel
 % uit commentaar. Let op: de tekst op de voorkaft blijft in het Nederlands, en
 % dat is ook de bedoeling!
 
 %\selectlanguage{english}
 
-%---------- Titelblad ---------------------------------------------------------
+%---------- Titelblad ----------------------------------------------------------
 \inserttitlepage
 
-%---------- Samenvatting, voorwoord -------------------------------------------
+%---------- Samenvatting, voorwoord --------------------------------------------
 \usechapterimagefalse
 \input{voorwoord}
 \input{samenvatting}
 
-%---------- Inhoudstafel ------------------------------------------------------
-\pagestyle{empty} % No headers
-\tableofcontents % Print the table of contents itself
-\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
-\pagestyle{fancy} % Print headers again
+%---------- Inhoudstafel -------------------------------------------------------
+\pagestyle{empty} % Geen hoofding
+\tableofcontents  % Voeg de inhoudstafel toe
+\cleardoublepage  % Zorg dat volgende hoofstuk op een oneven pagina begint
+\pagestyle{fancy} % Zet hoofding opnieuw aan
 
-%---------- Lijst figuren, afkortingen, ... -----------------------------------
+%---------- Lijst figuren, afkortingen, ... ------------------------------------
 
 % Indien gewenst kan je hier een lijst van figuren/tabellen opgeven. Geef in
 % dat geval je figuren/tabellen altijd een korte beschrijving:
 %
 %  \caption[korte beschrijving]{uitgebreide beschrijving}
+%
+% De korte beschrijving wordt gebruikt voor deze lijst, de uitgebreide staat bij
+% de figuur of tabel zelf.
 
 \listoffigures
 \listoftables
 
 % Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
 % hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
-% https://www.sharelatex.com/learn/Glossaries
+% https://www.overleaf.com/learn/latex/Glossaries
 
-%%---------- Kern -------------------------------------------------------------
+%---------- Kern ---------------------------------------------------------------
 
 % De eerste hoofdstukken van een bachelorproef zijn meestal een inleiding op
 % het onderwerp, literatuurstudie en verantwoording methodologie.
-% Aarzel niet om een meer beschrijvende titel aan deze hoofstukken te geven!
+% Aarzel niet om een meer beschrijvende titel aan deze hoofstukken te geven of
+% om bijvoorbeeld de inleiding en/of stand van zaken over meerdere hoofdstukken
+% te verspreiden!
 
 \input{inleiding}
 \input{standvanzaken}
