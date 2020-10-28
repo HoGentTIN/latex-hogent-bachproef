@@ -25,7 +25,7 @@ Qua editors voor LaTeX zijn er verschillende keuzemogelijkheden. We raden [TeXst
 Kies in het menu voor Options > Configure TeXstudio en pas volgende instellingen aan:
 
 - Build:
-    - Default compiler: "txs:///pdflatex"
+    - Default compiler: "txs:///xelatex"
     - Default Bibliography Tool: "txs:///biber" - Zorgt dat "biber" gebruikt wordt om de bibliografie te compileren (ipv biblatex)
 - Editor:
     - Indentation mode: Indent and Unindent Automatically
