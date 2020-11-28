@@ -65,21 +65,6 @@ Aandachtspunten:
     - De samenvatting in de hoofdtaal van het document komt [op lijn 40 van het LaTeX-bestand](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L40)
     - De Nederlandse vertaling ervan komt [op lijn 31](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L31)
 
-## Bachelorproef in het Engels
-
-Het bachelorproefsjabloon is voorzien op tekst in hetzij Nederlands, hetzij Engels. Wanneer je je bachelorproef in het Engels schrijft, moet je [lijn 54 van het hoofddocument](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/bachproef-tin.tex#L54) uit commentaar halen:
-
-```latex
-\selectlanguage{english}
-```
-
-Aandachtspunten:
-
-- Het voorblad blijft in het Nederlands (behalve je titel), en dit is ook de bedoeling
-- Je moet in dit geval ook een Nederlandse vertaling van je samenvatting voorzien. Het sjabloon houdt daar ook rekening mee:
-    - De samenvatting in de hoofdtaal van het document komt [op lijn 40 van het LaTeX-bestand](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L40)
-    - De Nederlandse vertaling ervan komt [op lijn 31](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L31)
-
 ## Vragen, fouten, verbeteringen
 
 Bugs, vragen voor verbeteringen, enz. zijn welkom! Je kan die registreren via de Issues. Je kan zelf ook verbeteringen aanbrengen via Pull Requests.
