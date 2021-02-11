@@ -25,8 +25,10 @@ Qua editors voor LaTeX zijn er verschillende keuzemogelijkheden. We raden [TeXst
 Kies in het menu voor Options > Configure TeXstudio en pas volgende instellingen aan:
 
 - Build:
-    - Default compiler: "txs:///xelatex"
+    - Default compiler: "Latexmk"
     - Default Bibliography Tool: "txs:///biber" - Zorgt dat "biber" gebruikt wordt om de bibliografie te compileren (ipv biblatex)
+- Commands:
+    - Latexmk: `latexmk -xelatex -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error %`
 - Editor:
     - Indentation mode: Indent and Unindent Automatically
     - Replace Indentation Tab by Spaces: Aanvinken
@@ -40,15 +42,13 @@ Tips:
 
 ### Jabref
 
-Kies in het menu voor File > Switch to BibLaTeX mode. Dit maakt de bestandsindeling van de bibliografische databank compatibel met dat van de cursus en het aangeboden LaTeX-sjabloon voor de bachelorproef. Als deze menu-optie niet beschikbaar is, maar wel "Switch to BibTeX mode", dan hoef je niets te doen.
-
 Kies voor Options > Preferences en pas volgende instellingen aan:
 
 - General:
     - Default encoding: UTF-8
-    - Default bibliography mode: biblatex
+    - Default library mode: biblatex
 - File:
-    - (optioneel) Main file directory: geef hier de directory waar je de PDFs van gevonden bronnen bijhoudt.
+    - (optioneel) Main file directory: geef hier de directory waar je de PDFs van gevonden bronnen bijhoudt. Als je dezelfde bestandsnaam gebruikt als je BibtexKey, dan vindt JabRef de PDF en kan je die openen vanuit het overzicht.
 
 ## Bachelorproef in het Engels
 
