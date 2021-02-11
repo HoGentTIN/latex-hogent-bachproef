@@ -26,7 +26,7 @@ Kies in het menu voor Options > Configure TeXstudio en pas volgende instellingen
 
 - Build:
     - Default compiler: "Latexmk"
-    - Default Bibliography Tool: "txs:///biber" - Zorgt dat "biber" gebruikt wordt om de bibliografie te compileren (ipv biblatex)
+    - Default Bibliography Tool: "Biber"
 - Commands:
     - Latexmk: `latexmk -xelatex -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error %`
 - Editor:
