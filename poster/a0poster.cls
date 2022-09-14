@@ -113,25 +113,25 @@
    \setlength{\textwidth}{119.3cm} %% paperwidth - (5cm + 5cm)
    \setlength{\textheight}{81.4cm} %% paperheight - (5cm + 5cm)
 \else\ifanull
-        \setlength{\paperwidth}{118.82cm}
-        \setlength{\paperheight}{83.96cm}
-        \setlength{\textwidth}{108.82cm} %% paperwidth - (5cm + 5cm)
-        \setlength{\textheight}{73.96cm} %% paperheight - (5cm + 5cm)
+        \setlength{\paperwidth}{118.9cm}
+        \setlength{\paperheight}{84.1cm}
+        \setlength{\textwidth}{108.9cm} %% paperwidth - (5cm + 5cm)
+        \setlength{\textheight}{74.1cm} %% paperheight - (5cm + 5cm)
      \else\ifaeins
-             \setlength{\paperwidth}{83.96cm}
+             \setlength{\paperwidth}{84.1cm}
              \setlength{\paperheight}{59.4cm}
-             \setlength{\textwidth}{79.96cm}
-             \setlength{\textheight}{55.4cm}
+             \setlength{\textwidth}{74.1cm}
+             \setlength{\textheight}{49.4cm}
           \else\ifazwei
                   \setlength{\paperwidth}{59.4cm}
-                  \setlength{\paperheight}{41.98cm}
-                  \setlength{\textwidth}{55.4cm}
-                  \setlength{\textheight}{37.98cm}
+                  \setlength{\paperheight}{42.0cm}
+                  \setlength{\textwidth}{53.4cm}
+                  \setlength{\textheight}{36.0cm}
                \else\ifadrei
-                       \setlength{\paperwidth}{41.98cm}
+                       \setlength{\paperwidth}{42.0cm}
                        \setlength{\paperheight}{29.7cm}
-                       \setlength{\textwidth}{37.98cm}
-                       \setlength{\textheight}{25.7cm}
+                       \setlength{\textwidth}{37.0cm}
+                       \setlength{\textheight}{24.7cm}
                     \else\relax
                     \fi
                \fi
@@ -164,10 +164,18 @@
 
 \setlength{\headheight}{0 cm}
 \setlength{\headsep}{0 cm}
+\ifadrei
+\setlength{\topmargin}{2.5 cm}
+\setlength{\oddsidemargin}{2.5 cm}
+\else\ifazwei
+\setlength{\topmargin}{3 cm}
+\setlength{\oddsidemargin}{3 cm}
+\else
 \setlength{\topmargin}{5 cm} %% 3 cm for unprintable at top
 			     %% (landscape) + 2 cm from border
 \setlength{\oddsidemargin}{5 cm} %% 3 cm for unprintable at left
 			    	 %% (landscape) + 2 cm from border
+\fi
 \setlength{\topskip}{0 cm}
 
 \input{a0size.sty}
