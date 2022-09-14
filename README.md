@@ -58,17 +58,18 @@ Kies voor Options > Preferences en pas volgende instellingen aan:
 
 ## Bachelorproef in het Engels
 
-TODO: aanpassen aan nieuw sjabloon
-
-Het bachelorproefsjabloon is voorzien op tekst in hetzij Nederlands, hetzij Engels. Wanneer je je bachelorproef in het Engels schrijft, moet je [lijn 52 van het hoofddocument](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/bachproef-tin.tex#L52) uit commentaar halen:
+Het bachelorproefsjabloon is voorzien op tekst in hetzij Nederlands, hetzij Engels. Wanneer je je bachelorproef in het Engels schrijft, pas je de instellingen van de documentclass aan. Nu staat er:
 
 ```latex
-\selectlanguage{english}
+\documentclass[dutch,dit,thesis]{hogentreport}
 ```
+
+Je kan `dutch` verwijderen of vervangen door `english`.
 
 Aandachtspunten:
 
 - Het voorblad blijft in het Nederlands (behalve je titel), en dit is ook de bedoeling
+- Pas de naam van het diploma aan (regel met commando`\degreesought{}`) in *Bachelor in applied computer science*.
 - Je moet in dit geval ook een Nederlandse vertaling van je samenvatting voorzien. Het sjabloon houdt daar ook rekening mee:
     - De samenvatting in de hoofdtaal van het document komt [op lijn 40 van het LaTeX-bestand](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L40)
     - De Nederlandse vertaling ervan komt [op lijn 31](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L31)
@@ -79,8 +80,8 @@ Bugs, vragen voor verbeteringen, enz. zijn welkom! Je kan die registreren via de
 
 ## Bijdragen
 
-- De vormgeving van het bachelorproefsjabloon is gebaseerd op het "[Legrand Orange Book](http://www.latextemplates.com/template/the-legrand-orange-book)" sjabloon door Mathias Legrand, met aanpassingen specifiek voor HoGent.
-- De vormgeving van het sjabloon voor het onderzoeksvoorstel is gebaseerd op "Stylish Article", eveneens door Mathias Legrand.
+- De vormgeving van het bachelorproefsjabloon is gebaseerd op het werk van [Pieter van der Kloet](https://github.com/pvdk/hogent-latex-thesis). Dat sjabloon wordt nu [hier verder onderhouden](https://github.com/HoGentTIN/latex-hogent-report) door Bert Van Vreckem
+- Het sjabloon voor het bachelorproefvoorstel [wordt hier bijgehouden](https://github.com/HoGentTIN/latex-hogent-article).
 
 Volgende personen hebben bijgedragen aan deze sjablonen:
 
