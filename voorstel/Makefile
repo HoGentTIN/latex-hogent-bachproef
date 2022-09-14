@@ -17,13 +17,6 @@ output_dir := out
 # LaTeX command for compiling the .tex files:
 latex_cmd := latexmk -output-directory="$(output_dir)" -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -shell-escape
 
-# Pandoc template directory
-pandoc_templates := "$(HOME)/.local/share/pandoc/templates"
-
-# class files install directory
-texmf_home := $(shell kpsewhich -var-value=TEXMFHOME)
-latex_install_dir := "$(texmf_home)/tex/latex/hogent-article"
-
 ##---------- Build targets ----------------------------------------------------
 
 help: ## Show this help message (default)
@@ -35,7 +28,7 @@ help: ## Show this help message (default)
 all: $(pdfs) ## Compile all LaTeX files (see list below)
 
 %.pdf: %.tex
-	[ -d $(output_dir) ] || mkdir -p $(output_dir)
+	[ -d $(output_dir) ] || mkdir -pv $(output_dir)
 	$(latex_cmd) $<
 
 clean: ## Delete LaTeX auxiliary files
