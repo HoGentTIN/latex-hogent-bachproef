@@ -1,257 +1,477 @@
-%===============================================================================
-% LaTeX-sjabloon voor een artikel voor gebruik in de opleiding toegepaste
-% informatica aan HOGENT.
-%
-% Gebaseerd op ``Stylish Article'' class Version 2.1 (1/10/15)
-% Originele stijl beschikbaar op: http://www.LaTeXTemplates.com
-%
-% Originele auteur:
-% Mathias Legrand (legrand.mathias@gmail.com), met uitgebreide aanpassingen door
-% Vel (vel@latextemplates.com).
-%
-% Aanpassingen voor HOGENT:
-% Jens Buysse (jens.buysse@hogent.be) en Bert Van Vreckem
-% (bert.vanvreckem@hogent.be)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%===============================================================================
+%% -----------------------------------------------------------------------------
+%% hogent-article --- Article class to be used in the bachelor
+%%   programme of applied computer science at Ghent University of
+%%   Applied Sciences.
+%% Email: bert.vanvreckem at hogent.be
+%%
+%% This class was inspired by:
+%%
+%% - hogentreport.cls - HOGENT report/thesis class by Pieter van der Kloet
+%%   (pvdkloet at gmail.com)
+%% - cup-journal.cls - Cambridge University Press article class by Paul
+%%   Gessler (paul.gessler at overleaf.com)
+%% -----------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hogent-article}[2019/01/10 Artikel voor gebruik in de opleiding toegepaste informatica aan HOGENT]
+\def\@classname{hogent-article}
+\ProvidesClass{hogent-article}
+  [2022/09/01 v2.1 Artikel voor gebruik in de opleiding toegepaste informatica aan HOGENT]
+\LoadClass[10pt,a4paper]{article}
 
-\RequirePackage{ifthen}
-\RequirePackage{calc}
-\RequirePackage{ifpdf}      % Needed to pick between latex and pdflatex
+%% Check compiler - issue an error if XeLaTeX was not used
+\RequirePackage{ifxetex}
 
-\AtEndOfClass{\RequirePackage{microtype}}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-\ProcessOptions*
-\LoadClass{article}
+\ifxetex
+\else
+  \ClassError{\@classname}
+    {Incompatible LaTeX compiler was used!}
+    {Please use XeLaTeX.}
+\fi
 
-%-------------------------------------------------------------------------------
-% Algemene vormgeving, pagina-indeling
-%-------------------------------------------------------------------------------
+%% -----------------------------------------------------------------------------
+%% Processing Package options
 
-\RequirePackage[%
-a4paper,
-bottom=2.1cm,
-left=1.7cm,
-right=1.7cm,
-top=2.1cm,
-footskip=37pt,
-headheight=12pt
-]{geometry}
+\RequirePackage{xkeyval} % Processing of documentclass options
 
-\RequirePackage{booktabs}
-\RequirePackage{graphicx}
+% Select a language: add option english or dutch, default=dutch
+\newif\if@dutch
+\newif\if@english
+\DeclareOptionX{dutch}{\@dutchtrue\@englishfalse}
+\DeclareOptionX{english}{\@dutchfalse\@englishtrue}
+\ExecuteOptionsX{dutch} %% Default language
 
-\RequirePackage{enumitem}
-\setlist{nolistsep} % Geen ruimte tussen items in een list
+% Number of columns: onecolumn/twocolumn
+\newif\if@onecolumn
+\newif\if@twocolumn
+\DeclareOptionX{onecolumn}{\@onecolumntrue\@twocolumnfalse}
+\DeclareOptionX{twocolumn}{\@onecolumnfalse\@twocolumntrue}
+\ExecuteOptionsX{twocolumn}
 
-\usepackage{hyperref}
-\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=black,citecolor=color2,linkcolor=color2,bookmarksopen=false}
+%% Pass unknown options to the parent class (article)
+\DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptionsX\relax
 
-%----------------------------------------------------------------------
-% Lettertypes en kleuren
-%----------------------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
+%% -----------------------------------------------------------------------------
+%% Language selection
 
-\RequirePackage{times}      % Loads the Times-Roman Fonts
-\RequirePackage{mathptmx}   % Loads the Times-Roman Math Fonts
+%% Dutch is the default language, but this can be changed to English by
+%% specifying the 'english' option to the document class
+\if@english
+    \RequirePackage[english]{babel}
+    \RequirePackage[backend=biber,style=apa]{biblatex}
+    \DeclareLanguageMapping{english}{british-apa}
+\else
+    \RequirePackage[dutch]{babel}
+    \RequirePackage[style=apa,backend=biber]{biblatex}
+    \DeclareLanguageMapping{dutch}{dutch-apa}
+\fi
 
-\RequirePackage{amsmath,amsfonts,amssymb}
-\RequirePackage{csquotes}
+%% -----------------------------------------------------------------------------
+%% Variables for document metadata
+
+\let\@studyprogramme\@empty  % e.g. applied informatics, office management, etc.
+\let\@course\@empty          % e.g. research methods, data science, etc.
+\let\@assignmenttype\@empty  % e.g. paper, research proposal, etc.
+\let\@academicyear\@empty    % e.g. 2022--2023
+\let\@email\@empty           % e.g. ernst.aarden@student.hogent.be
+\let\@supervisor\@empty      % specifically for bachelor thesis proposal
+\let\@supervisor@role\@empty
+\let\@projectrepo\@empty     % e.g. https://github.com/hogenttin/some-repo
+\let\@specialisation\@empty  % e.g. System and Network Admin, Data engineering
+\let\@keywords\@empty
+
+\newcommand{\studyprogramme}[1]{\def\@studyprogramme{#1}}
+\newcommand{\course}[1]{\def\@course{#1}}
+\newcommand{\assignmenttype}[1]{\def\@assignmenttype{#1}}
+\newcommand{\academicyear}[1]{\def\@academicyear{#1}}
+\newcommand{\supervisor}[2][]{%
+  \def\@supervisor{#2}%
+  \def\@supervisor@role{#1}%
+}
+\newcommand{\projectrepo}[1]{\def\@projectrepo{#1}}
+
+\newcommand{\specialisation}[1]{\def\@specialisation{#1}}
+\newcommand{\keywords}[1]{\def\@keywords{#1}}
+
+\@onlypreamble\studyprogramme
+\@onlypreamble\course
+\@onlypreamble\assignmenttype
+\@onlypreamble\academicyear
+\@onlypreamble\supervisor
+\@onlypreamble\projectrepo
+\@onlypreamble\keywords
+
+%% List of authors.
+%%   Each author is specified separately with \author{name}
+%%   You can add an email address with \email{address}
+
+\newcount\hga@author@cnt % counter for authors
+\newcount\hga@email@cnt
+
+\renewcommand*\author[1]{%
+  \global\advance\hga@author@cnt\@ne\relax
+  \expandafter\gdef\csname @author@\@roman\hga@author@cnt\endcsname{#1}%
+}
+\newcommand*\email[1]{%
+  \ifnum\hga@author@cnt>\z@\relax
+    \global\advance\hga@email@cnt\@ne\relax
+    \expandafter\gdef\csname @email@\@roman\hga@email@cnt\endcsname{#1}%
+  \else
+    \ClassWarning{\@classname}{Email with no author}
+  \fi
+}
+\@onlypreamble\author
+\@onlypreamble\email
+
+%% Command that checks whether the necessary information is present
+\newcommand{\@checkvariables}{
+  \ifnum\hga@author@cnt=0
+    \ClassError{\@classname}
+      {No authors defined!}
+      {Use the 'author' command to define at least one author.}
+  \fi
+  \ifx\@title\@empty{%
+    \ClassError{\@classname}
+      {Title is undefined!}
+      {Use the 'title' command to define it.}
+  }\fi
+
+  \ifnum\hga@email@cnt=0
+    \ClassWarning{\@classname}{No e-mail addresses specified! You should specify an e-mail address for each author with the 'email' command}
+  \fi
+}
+
+%% Series of commands to print a list of all authors
+\newcommand*\author@list{%
+  \@tempcnta\z@\relax
+  \ifnum\hga@author@cnt=\z@\relax\else
+    \expandafter\author@list@main
+  \fi
+}
+\newcommand*\author@list@main{%
+  \advance\@tempcnta\@ne\relax
+  \author@list@and
+  \space
+  \@nameuse{@author@\@roman\@tempcnta}%
+  \author@list@comma
+  \ifnum\@tempcnta<\hga@author@cnt\relax
+    \expandafter\author@list@main
+  \fi
+}
+\newcommand*\author@list@and{%
+  \ifnum\hga@author@cnt=\@ne\relax\else
+    \ifnum\@tempcnta=\hga@author@cnt\relax
+      \space \if@english and\else en\fi%
+    \fi
+  \fi
+}
+\newcommand*\author@list@comma{%
+  \ifnum\hga@author@cnt>\tw@\relax
+    \ifnum\@tempcnta<\hga@author@cnt\relax
+      ,%
+    \fi
+  \fi
+}
+
+% Series of commands to print a list of email addresses
+\newcommand*\email@list{%
+  \@tempcnta\z@\relax
+  \ifnum\hga@email@cnt=\z@\relax\else
+    \expandafter\email@list@main
+  \fi
+}
+\newcommand*\email@list@main{%
+  \advance\@tempcnta\@ne\relax
+  \email@list@and
+  \space
+  \href{mailto:\@nameuse{@email@\@roman\@tempcnta}}{\nolinkurl{\@nameuse{@email@\@roman\@tempcnta}}}%
+  \email@list@comma
+  \ifnum\@tempcnta<\hga@email@cnt\relax
+    \expandafter\email@list@main
+  \fi
+}
+\newcommand*\email@list@and{%
+  \ifnum\hga@email@cnt=\@ne\relax\else
+    \ifnum\@tempcnta=\hga@email@cnt\relax
+      \space \if@english and\else en\fi%
+    \fi
+  \fi
+}
+\newcommand*\email@list@comma{%
+  \ifnum\hga@email@cnt>\tw@\relax
+    \ifnum\@tempcnta<\hga@email@cnt\relax
+      ,%
+    \fi
+  \fi
+}
+%% -----------------------------------------------------------------------------
+%% Colors
 
 \RequirePackage{xcolor}
 
-\definecolor{color1}{RGB}{0,147,208} % Color of the article title and sections
-\definecolor{color2}{RGB}{0,20,20}   % Color of the boxes behind the abstract and headings
+%% Accent colors:
+\definecolor{hogent-darkgreen}{RGB}{22,176,165}
+\definecolor{hogent-pink}{RGB}{241,157,160}
+\definecolor{hogent-ochre}{RGB}{250,188,50}
+\definecolor{hogent-orange}{RGB}{239,135,103}
+\definecolor{hogent-purple}{RGB}{187,144,189}
+\definecolor{hogent-blue}{RGB}{76,162,213}
+\definecolor{hogent-lightgreen}{RGB}{165,202,114}
+\definecolor{hogent-brown}{RGB}{216,176,131}
+\definecolor{hogent-grey}{RGB}{195,187,175}
+\definecolor{hogent-yellow}{RGB}{244,222,0}
 
-%-------------------------------------------------------------------------------
-% Taal, lokalisatie
-%-------------------------------------------------------------------------------
+%% For now, make colors hard-coded, we'll add customization later
+\colorlet{links}{hogent-blue}
+\colorlet{title}{hogent-blue}
 
-\RequirePackage[english,dutch]{babel}
-\RequirePackage{iflang}
+%% -----------------------------------------------------------------------------
+%% Fonts
 
-%-------------------------------------------------------------------------------
-% Bijschrift bij afbeeldingen en tabellen
-%-------------------------------------------------------------------------------
+\RequirePackage{fontspec}     % Support for TTF fonts
+\RequirePackage{unicode-math}
 
-\RequirePackage[labelfont={bf,sf,small},%
-labelsep=period,%
-justification=raggedright]{caption}
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{0pt}
+\newfontfamily\montserratblack{Montserrat}[BoldFont={Montserrat Black}]
+\newfontfamily\montserratextrabold{Montserrat}%
+    [BoldFont={Montserrat ExtraBold}]
 
-%-------------------------------------------------------------------------------
-% Vormgeving sectiekoppen
-%-------------------------------------------------------------------------------
+\def\titlefont{\montserratblack\bfseries}
+\def\tocfont{\montserratblack}
 
-\RequirePackage[explicit]{titlesec}
-\titleformat{\section}
-  {\color{color1}\large\sffamily\bfseries}
-  {}
-  {0em}
-  {\colorbox{color2!10}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\centering\arabic{section}. #1}}}
-  []
-\titleformat{name=\section,numberless}
-  {\color{color1}\large\sffamily\bfseries}
-  {}
-  {0em}
-  {\colorbox{color2!10}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\centering#1}}}
-  []
-\titleformat{\subsection}
-  {\color{color1}\sffamily\bfseries}
-  {\thesubsection}
-  {0.5em}
-  {#1}
-  []
-\titleformat{\subsubsection}
-  {\sffamily\small\bfseries}
-  {\thesubsubsection}
-  {0.5em}
-  {#1}
-  []
-\titleformat{\paragraph}[runin]
-  {\sffamily\small\bfseries}
-  {}
-  {0em}
-  {#1}
-\titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{5pt}
-\titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
-\titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
-\titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{10pt}
+\setmainfont{Montserrat}      % Font selection
+\setmathfont{Fira Math}
+\setmonofont{Fira Code}
 
-%-------------------------------------------------------------------------------
-% Inhoudstafel
-%-------------------------------------------------------------------------------
+%% -----------------------------------------------------------------------------
+%% Page setup
 
-\usepackage{titletoc}
+\RequirePackage{geometry}
+\geometry{a4paper,bottom=2.1cm,left=1.7cm,right=1.7cm,top=2.1cm,footskip=37pt,headheight=13pt}
 
-\newlength{\tocsep}
-\setlength\tocsep{1.5pc} % Inspringen
-\setcounter{tocdepth}{3} % neem 3 niveaus op in de inhoudstafel
+% It seems that using the Montserrat font screws up hyphenation. With the
+% default settings, we get a lot of overfull \hbox warnings and text overflowing
+% in the margin on the right. Setting \tolerance to a higher value than the
+% default (200) improves the result.
+\tolerance 1000
 
-\contentsmargin{0cm}
-\titlecontents{section}[\tocsep]
-  {\addvspace{4pt}\small\bfseries\sffamily}
-  {\contentslabel[\thecontentslabel]{\tocsep}}
-  {}
-  {\hfill\thecontentspage}
-  []
-\titlecontents{subsection}[\tocsep]
-  {\addvspace{2pt}\sffamily}
-  {\contentslabel[\thecontentslabel]{\tocsep}}
-  {}
-  {\ \titlerule*[.5pc]{.}\ \thecontentspage}
-  []
-\titlecontents*{subsubsection}[\tocsep]
-  {\footnotesize\sffamily}
-  {}
-  {}
-  {}
-  [\ \textbullet\ ]
+%% -----------------------------------------------------------------------------
+%% Title
 
-%-------------------------------------------------------------------------------
-% Meerdere auteurs
-%-------------------------------------------------------------------------------
+\renewcommand{\@maketitle}{
+  \@checkvariables
 
-\newcount\@authcnt
-\newcount\@tmpcnt\@tmpcnt\z@
-
-\def\@affiliation{%
-  \ifnum\@tmpcnt<\@authcnt
-   \global\advance\@tmpcnt1
-    \raggedright \csname @auth\romannumeral\the\@tmpcnt\endcsname\hfill\\%
-   \let\next\@affiliation \vskip1pt
+  \begingroup
+  \ifx\@assignmenttype\@empty
   \else
-   \let\next\relax
+    \raggedright\titlefont\color{title}\Large\textsc{\@assignmenttype}
+    \medskip
   \fi
-\next}
+  \endgroup
 
-\newcommand{\affiliation}[1]{%
-    \global\advance\@authcnt1
-    \expandafter\gdef\csname @auth\romannumeral\the\@authcnt\endcsname
-    {#1}}
+  \begingroup
+    \raggedright\titlefont\color{title}\LARGE\@title\@addpunct{.}
+  \endgroup
 
-%-------------------------------------------------------------------------------
-% Titel, kader met samenvatting
-%-------------------------------------------------------------------------------
+  \begingroup
+    \medskip
+    \raggedright\titlefont\color{title}\large
+    \ifx\@course\@empty
+      \ifx\@academicyear\@empty\today\else\@academicyear\fi
+    \else
+      \@course
+      \ifx\@academicyear\@empty, \today\else, \@academicyear\fi
+    \fi
+  \endgroup
 
-\newcommand{\PaperTitle}[1]{\def\@PaperTitle{#1}}
-\newcommand{\PaperType}[1]{\def\@PaperType{#1}}
-\newcommand{\Authors}[1]{\def\@Authors{#1}}
-\newcommand{\Abstract}[1]{\def\@Abstract{#1}}
-\newcommand{\Keywords}[1]{\def\@Keywords{#1}}
-\newcommand{\CoPromotor}[1]{\def\@CoPromotor{#1}}
+  \bigskip
 
-\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
-\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+  \begingroup
+    \raggedright\Large\author@list
 
-\renewcommand{\@maketitle}{%
-\twocolumn[{%
-\thispagestyle{empty}%
-\vskip20pt%
-{\raggedright\color{color1}\sffamily\bfseries\fontsize{20}{24}\selectfont \@PaperTitle\\}%
-{\raggedright\color{color1}\sffamily\bfseries\fontsize{13}{15.6}\selectfont \@PaperType\par}%
-\vskip10pt%
-{\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont  \@Authors\par}%
-\vskip18pt%
-\fcolorbox{color1}{white}{%
-\parbox{\textwidth-2\fboxsep-2\fboxrule}{\centering%
-\colorbox{color2!10}{%
-\parbox{\textwidth-4\fboxsep-2\fboxrule}{%
-\sffamily\textbf{\abstractname}\\\@Abstract%
-\ifx\@Keywords\@empty%
-\else%
-\\[4pt]\textbf{\keywordname}\\\@Keywords%
-\fi%
-\ifx\@CoPromotor\@empty%
-\else%
-\\[4pt]\textbf{Co-promotor}\\\@CoPromotor%
-\fi%
-}%
-}%
-\vskip4pt%
-\begingroup%
-\raggedright\sffamily\small%
-\footnotesize\@affiliation\par%
-\endgroup%%
-}%
-}%
-\vskip25pt%
-}]%
+    \medskip
+  \endgroup
+
+  \begingroup
+    \small
+    \ifnum\hga@email@cnt>0
+      \raggedright E-mail: \email@list
+    \fi
+
+    \ifx\@projectrepo\@empty\else
+      Project repo: \url{\@projectrepo}
+    \fi
+
+    \ifx\@supervisor\@empty\else
+      \ifx\@supervisor@role\@empty
+        \if@english Supervisor: \else Begeleider: \fi
+      \else
+        \@supervisor@role:
+      \fi
+      \@supervisor
+    \fi
+
+    \medskip
+    \hrule
+    \medskip
+  \endgroup
 }
 
-%----------------------------------------------------------------------
-% Paginahoofding en voettekst
-%----------------------------------------------------------------------
+%% -----------------------------------------------------------------------------
+%% Abstract
 
-\RequirePackage{fancyhdr}  % Needed to define custom headers/footers
-\RequirePackage{lastpage}  % Number of pages in the document
+\RequirePackage{mdframed}
+\RequirePackage{environ}
+
+\newmdenv[
+  hidealllines=true,
+  leftmargin=0mm,rightmargin=0mm,
+  innerleftmargin=0mm,innerrightmargin=0mm,
+  innertopmargin=0mm,innerbottommargin=0mm,
+  frametitle={\large\titlefont\color{title} \if@english Abstract \else Samenvatting \fi},
+  frametitleaboveskip=0pt,
+  frametitlebelowskip=6pt]{hga@abstract@box}
+
+\let\abstract@org\abstract
+\def\abstract{\hga@abstract@box\small}
+\def\endabstract{\endhga@abstract@box}
+\let\oldabstract\abstract
+\let\endoldabstract\endabstract
+\newcommand{\makeabstract}{%
+  \maketitle%
+  \begin{oldabstract}%
+  \protecting{\BODY}%
+  \end{oldabstract}%
+  \begingroup
+  \ifx\@specialisation\@empty\else
+    \noindent\small\bfseries\if@english Specialisation: \else Keuzerichting: \fi
+    \normalfont\@specialisation
+  \fi
+  \endgroup
+
+  \begingroup
+  \ifx\@keywords\@empty\else
+    \noindent\small\bfseries\if@english Keywords: \else Sleutelwoorden: \fi
+    \normalfont\@keywords
+  \fi
+  \endgroup
+  \bigskip
+  \hrule
+  \bigskip
+}
+\RenewEnviron{abstract}{%
+  \if@twocolumn
+    \twocolumn[%
+    \begin{@twocolumnfalse}
+      \makeabstract
+    \end{@twocolumnfalse}]
+  \else
+    \makeabstract
+  \fi
+}
+
+%% -----------------------------------------------------------------------------
+%% Heading and toc format
+
+\RequirePackage{titlesec}
+\RequirePackage{titletoc}
+
+%% Section headers
+\titleformat{\section}
+    {\Large\titlefont}
+    {\bfseries\thesection.\ }
+    {0pt}
+    {\bfseries\color{title}}
+
+%% Sections are preceded by an empty line.
+\titlespacing{\section}{0pt}{\baselineskip}{3pt}
+
+%% In the table of contents, section names are followed by a line of dots 8pt
+%% apart
+\titlecontents{section}[1.8em]
+  {\tocfont}
+  {\contentslabel[\thecontentslabel]{1.8em}}
+  {}
+  {\titlerule*[8pt]{.}\ \thecontentspage}
+
+%% Subsection headers
+\titleformat{\subsection}
+    {\large\titlefont}
+    {\bfseries\thesubsection.\ }
+    {1.8pt}
+    {\bfseries}
+\titlespacing{\subsection}{0pt}{.75\baselineskip}{3pt}
+\titlecontents{subsection}[3.6em]
+  {\tocfont}
+  {\contentslabel[\thecontentslabel]{1.8em}}
+  {}
+  {\hfill\thecontentspage}
+
+%% Subsubsection headers
+\titleformat{\subsubsection}
+    {\normalsize\titlefont}
+    {\bfseries\thesubsubsection.\ }
+    {1.8pt}
+    {\bfseries}
+\titlespacing{\subsubsection}{0pt}{.5\baselineskip}{3pt}
+\titlecontents{subsubsection}[5.4em]
+  {\tocfont}
+  {\contentslabel[\thecontentslabel]{2.4em}}
+  {}
+  {\hfill\thecontentspage}
+
+%% -----------------------------------------------------------------------------
+%% Page header and footer
+
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}  % Reference to last page in the document
+
 \pagestyle{fancy}          % Enables the custom headers/footers
+
 % Headers
-\lhead{\small\sffamily\bfseries\@PaperTitle}%
-\chead{}%
-\rhead{\thepage/\pageref{LastPage}}
+\fancyhead[L]{%
+  \small\bfseries
+  \ifx\@course\@empty
+    \@assignmenttype
+  \else
+    \@course
+    \ifx\@assignmenttype\@empty\else: \@assignmenttype\fi
+  \fi}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+
 % Footers
-\lfoot{\sffamily\small\bfseries\@PaperType}%
-\cfoot{}%
-\rfoot{\includegraphics[height=1.1cm]{img/HOGENT_Logo_Pos_rgb.png}}%
+\fancyfoot[L]{\small\bfseries\@studyprogramme}%
+\fancyfoot[C]{}
+\fancyfoot[R]{\includegraphics[height=1.1cm]{HOGENT_Logo_Pos_rgb.png}}%
+
+% First page
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[L]{\small\bfseries\@studyprogramme}%
+  \fancyfoot[C]{}
+  \fancyfoot[R]{\includegraphics[height=1.1cm]{HOGENT_Logo_Pos_rgb.png}}%
+}
+
 \renewcommand{\headrulewidth}{0pt}% % No header rule
 \renewcommand{\footrulewidth}{0pt}% % No footer rule
 
-%----------------------------------------------------------------------
-% Bibliografie
-%----------------------------------------------------------------------
-
-\RequirePackage[backend=biber,style=apa]{biblatex}
-\DeclareLanguageMapping{dutch}{dutch-apa}
-\addbibresource{bibliografie.bib}
-
-\endinput
+%% -----------------------------------------------------------------------------
+%% Packages for general use
+\RequirePackage{graphicx}
+\graphicspath{{img/}}
+\RequirePackage{amsmath}
+\RequirePackage{eurosym}
+\RequirePackage{url}
+\RequirePackage[breaklinks]{hyperref}
+\hypersetup{
+  unicode=true,
+  colorlinks=true,
+  linkcolor=links,
+  urlcolor=links,
+  citecolor=links,
+  filecolor=links,
+  pdftitle=\@title,
+  pdfauthor=\@author
+}
+\RequirePackage{booktabs}
+\RequirePackage{csquotes}
