@@ -28,5 +28,6 @@ jobs:
       with:
         name: output
         path: |
-          output/*/*.pdf
-          output/*/*.log
+          output/*.pdf
+          output/*.log
+        if-no-files-found: error
