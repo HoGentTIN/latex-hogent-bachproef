@@ -18,10 +18,10 @@ jobs:
       run: docker build -t bpimg -f docker/Dockerfile .
       
     - name: Build the proposal
-      run: docker run --rm -v $(PWD):/bp bpimg env /bp/docker/render_thesis.sh voorstel *BPvoorstel.tex
+      run: docker run --rm -v "$PWD":/bp bpimg env /bp/docker/render_thesis.sh voorstel *BPvoorstel.tex
 
     - name: Build the thesis
-      run: docker run --rm -v $(PWD):/bp bpimg env /bp/docker/render_thesis.sh bachproef *BP.tex
+      run: docker run --rm -v "$PWD":/bp bpimg env /bp/docker/render_thesis.sh bachproef *BP.tex
 
     - uses: actions/upload-artifact@v3
       name: Upload artifacts
