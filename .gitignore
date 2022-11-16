@@ -129,3 +129,6 @@ sympy-plots-for-*.tex/
 
 # Vim-LaTeX
 *.latexmain
+
+# output directory - see make_thesis.sh
+output/

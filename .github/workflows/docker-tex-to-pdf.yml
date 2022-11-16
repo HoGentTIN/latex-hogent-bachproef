@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build -t bpimg -f docker/Dockerfile .
+      
+    - name: Build the proposal
+      run: docker run --rm -v "$PWD":/bp bpimg env /bp/docker/render_thesis.sh voorstel *BPvoorstel.tex
+
+    - name: Build the thesis
+      run: docker run --rm -v "$PWD":/bp bpimg env /bp/docker/render_thesis.sh bachproef *BP.tex
+
+    - uses: actions/upload-artifact@v3
+      name: Upload artifacts
+      with:
+        name: output
+        path: |
+          output/*.pdf
+          output/*.log
+        if-no-files-found: error
