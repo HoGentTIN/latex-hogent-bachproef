@@ -5,4 +5,4 @@
 docker build -t bpimg -f docker/Dockerfile .
 
 # build the proposal
-docker run --rm -v "$PWD":/bp bpimg env /bp/docker/render_thesis.sh voorstel *BPvoorstel.tex
+docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh voorstel *BPvoorstel.tex
