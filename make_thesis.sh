@@ -24,4 +24,4 @@ ${container_cmd} build --tag bpimg \
 # build the thesis
 ${container_cmd} run --rm \
   --volume "$PWD":/bp"${mount_opts}" bpimg \
-  sh /bp/docker/render_thesis.sh bachproef ./*BP.tex
+  sh /bp/docker/render_thesis.sh bachproef

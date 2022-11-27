@@ -84,8 +84,6 @@ Dat impliceert dus dat je Docker moet geïnstalleerd hebben op jouw laptop!
 - Ubuntu, Debian, enz.: De Docker engine uit de repositories van de distributie of [de builds van Docker zelf](https://docs.docker.com/engine/install/ubuntu/)
 - Fedora: installeer Podman uit de officiële repos
 
-**LET OP:** het script zal enkel werken als het .tex-bestand met je bachelorproef eindigt op "*BP.tex" (bijv. "AardenErnst**BP.tex**")
-
 Om je bachelorproef te compileren, voer je dan op Windows het volgende commando uit (in een CMD of PowerShell-console, in de directory met de scripts):
 
 ```console
@@ -98,7 +96,7 @@ Op Mac of Linux (in een Bash-console):
 $ ./make_thesis.sh
 ```
 
-Om je bachelorproef*voorstel* te compileren zijn er gelijkaardige scripts (`make_voorstel.bat` of `.sh`). De naam van het LaTeX-bestand moet in dit geval eindigen met "*BPvoorstel.tex").
+Om je bachelorproef*voorstel* te compileren zijn er gelijkaardige scripts (`make_voorstel.bat` of `.sh`).
 
 Het resulterende PDF-bestand vind je in de directory `output/`, die aangemaakt wordt indien nodig.
 

@@ -24,4 +24,4 @@ ${container_cmd} build --tag bpimg \
 # build the proposal
 ${container_cmd} run --rm \
   --volume "$PWD":/bp"${mount_opts}" bpimg \
-  sh /bp/docker/render_thesis.sh voorstel ./*BPvoorstel.tex
+  sh /bp/docker/render_thesis.sh voorstel
