@@ -4,9 +4,12 @@
 set -o nounset
 set -o errexit
 
+# If Podman is installed (Fedora), use that instead of Docker
 if [ -x /usr/bin/podman ]; then
   echo "Detected Podman"
   container_cmd=/usr/bin/podman
+  # Without this mount option, the container will not have access to the
+  # shared volume /bp
   mount_opts=":Z"
 else
   echo "Using Docker"
@@ -18,7 +21,7 @@ fi
 ${container_cmd} build --tag bpimg \
   --file docker/Dockerfile .
 
-# build the proposal
+# build the thesis
 ${container_cmd} run --rm \
   --volume "$PWD":/bp"${mount_opts}" bpimg \
   sh /bp/docker/render_thesis.sh bachproef ./*BP.tex

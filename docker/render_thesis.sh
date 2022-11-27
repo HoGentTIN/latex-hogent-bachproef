@@ -1,5 +1,20 @@
 #!/bin/bash
 
-cd /bp/$1
-# latexmk -output-directory=../output -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -shell-escape *BP.tex
-latexmk -output-directory=../output -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -shell-escape $2
+set -o errexit
+set -o nounset
+
+readonly source_dir="${1}"
+readonly latex_file="${2}"
+
+readonly output_dir="../output"
+
+cd "/bp/${source_dir}"
+
+latexmk \
+  -file-line-error \
+  -interaction=nonstopmode \
+  -output-directory="${output_dir}" \
+  -shell-escape \
+  -synctex=1 \
+  -xelatex \
+  "${latex_file}"
