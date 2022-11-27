@@ -303,21 +303,33 @@
 %% Header/footer
 %%============================================================================
 
+\RequirePackage{tikz}
 \RequirePackage{fancyhdr}
+\usetikzlibrary{calc}
+\RequirePackage{tikzpagenodes}
 \pagestyle{fancy}
 
 % Clear default definitions
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\setlength{\footskip}{8cm}
+
+%% Use the length of the 'HO' part of the logo to set the padding of the logo
+\newsavebox{\logopart}
+\savebox{\logopart}{\includegraphics[height=7cm]{logopart}}
 
 % First page footer
 \fancypagestyle{plain}{%
+  %\newgeometry{bottom=\wd\logopart}
   \fancyhf{}%
   \fancyfoot[L]{}%
   \fancyfoot[C]{}
   \fancyfoot[R]{%
-    \includegraphics[height=5cm]{HOGENT_Logo_Pos_rgb.png}
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [anchor=south east, shift={(-\the\wd\logopart, \the\wd\logopart)}, inner sep=0, outer sep=0] (logo) at (current page.south east)%
+    {%
+      \includegraphics[height=\the\ht\logopart]{hogent_logo}%
+    };%
+  \end{tikzpicture}
   }%
 }
 
