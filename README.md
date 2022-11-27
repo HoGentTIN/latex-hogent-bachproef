@@ -96,9 +96,9 @@ Op Mac of Linux (in een Bash-console):
 $ ./make_thesis.sh
 ```
 
-Om je bachelorproef*voorstel* te compileren zijn er gelijkaardige scripts (`make_voorstel.bat` of `.sh`).
+Om je bachelorproef*voorstel* en poster te compileren zijn er gelijkaardige scripts (`make_voorstel.bat`/`.sh` en `make_poster.bat`/`.sh`).
 
-Het resulterende PDF-bestand vind je in de directory `output/`, die aangemaakt wordt indien nodig.
+De resulterende PDF-bestanden vind je in de directory `output/`, die aangemaakt wordt indien nodig.
 
 De eerste keer dat je dit script uitvoert, zal het compilatieproces langer duren: eerst moet immers een Docker-image gebouwd worden waarin de nodige packages geïnstalleerd zijn. Een eerste LaTeX-compilatie duurt ook vaak langer dan de volgende.
 
@@ -120,9 +120,11 @@ Bugs, vragen voor verbeteringen, enz. zijn welkom! Je kan die registreren via de
 Volgende personen hebben bijgedragen aan deze sjablonen:
 
 - Bert Van Vreckem
-- Jens Buysse
 - Chantal Teerlinck
+- Jan Willem
+- Jens Buysse
 - Jeroen Maelbrancke
+- Jonas Verhofsté
 - Matts Devriendt
 - Niels Corneille
 - Patrick Van Brussel
