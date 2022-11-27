@@ -74,6 +74,42 @@ Aandachtspunten:
     - De samenvatting in de hoofdtaal van het document komt [op lijn 40 van het LaTeX-bestand](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L40)
     - De Nederlandse vertaling ervan komt [op lijn 31](https://github.com/HoGentTIN/bachproef-latex-sjabloon/blob/master/bachproef/samenvatting.tex#L31)
 
+## Scripts voor compileren, Github Actions
+
+LaTeX correct opzetten vraagt wat moeite en is in het bijzonder op Windows niet altijd even evident. Daarom hebben we enkele scripts voorzien die het proces automatiseren en de meest voorkomende fouten vermijden. Concreet wordt er een **Docker container-image** gebouwd waarin alle nodige packages en lettertypes geïnstalleerd worden zodat de compilatie foutloos kan uitgevoerd worden.
+
+Dat impliceert dus dat je Docker moet geïnstalleerd hebben op jouw laptop!
+
+- Windows, MacOS: [Docker Desktop](https://docs.docker.com/desktop/)
+- Ubuntu, Debian, enz.: De Docker engine uit de repositories van de distributie of [de builds van Docker zelf](https://docs.docker.com/engine/install/ubuntu/)
+- Fedora: installeer Podman uit de officiële repos
+
+**LET OP:** het script zal enkel werken als het .tex-bestand met je bachelorproef eindigt op "*BP.tex" (bijv. "AardenErnst**BP.tex**")
+
+Om je bachelorproef te compileren, voer je dan op Windows het volgende commando uit (in een CMD of PowerShell-console, in de directory met de scripts):
+
+```console
+> make_thesis.bat
+```
+
+Op Mac of Linux (in een Bash-console):
+
+```console
+$ ./make_thesis.sh
+```
+
+Om je bachelorproef*voorstel* te compileren zijn er gelijkaardige scripts (`make_voorstel.bat` of `.sh`). De naam van het LaTeX-bestand moet in dit geval eindigen met "*BPvoorstel.tex").
+
+Het resulterende PDF-bestand vind je in de directory `output/`, die aangemaakt wordt indien nodig.
+
+De eerste keer dat je dit script uitvoert, zal het compilatieproces langer duren: eerst moet immers een Docker-image gebouwd worden waarin de nodige packages geïnstalleerd zijn. Een eerste LaTeX-compilatie duurt ook vaak langer dan de volgende.
+
+### Automatische compilatie op Github Actions
+
+Als je een Github-repository aanmaakt voor je bachelorproef (wat we sterk aanbevelen!), dan zal telkens je nieuwe tekst naar Github pusht, jouw bachelorproef automatisch gecompileerd worden. Dit is geconfigureerd in `.github/workflow/docker-tex-to-pdf.yml`. Het compilatieproces wordt uitgevoerd op de Github-servers en de resulterende PDF- en logbestanden (voor troublehshooting) worden ter beschikking gehouden en kan je [downloaden](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts).
+
+Deze "artefacten" worden niet onbeperkt bijgehouden: na 2 dagen worden de meesten verwijderd. Je kan vermijden dat een PDF verwijderd wordt door een tag toe te kennen aan de commit. De meest recente versie wordt ook bijgehouden (max. 90 dagen).
+
 ## Vragen, fouten, verbeteringen
 
 Bugs, vragen voor verbeteringen, enz. zijn welkom! Je kan die registreren via de Issues. Je kan zelf ook verbeteringen aanbrengen via Pull Requests.
