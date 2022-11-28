@@ -22,6 +22,8 @@ Je hebt de volgende lettertypes nodig. Ze zijn meegeleverd [in deze repository](
 - Fira Code (monogespatieerde tekst)
 - Fira Math (wiskundige formules)
 
+N.B. Lettertypes installeren kan je op zowel Windows, macOS als Linux door te dubbelklikken op het .otf-bestand en op de knop "Installeren" te klikken in het preview-venster. Je kan de bestanden ook kopiëren naar de directory met lettertypes: `C:\Windows\Fonts` voor Windows, `/Library/Fonts` of `~/Library/Fonts` op macOS, `/usr/share/fonts` of `~/.local/share/fonts` op Linux.
+
 ## LaTeX editor, bibliografie
 
 Qua editors voor LaTeX zijn er verschillende keuzemogelijkheden. We raden [TeXstudio](https://www.texstudio.org/) aan en [Jabref](https://www.jabref.org/) voor het bijhouden van een bibliografische databank. Ook Visual Studio Code is een zeer goede LaTeX-editor (via de plugin LaTeX Workshop van James Yu).
