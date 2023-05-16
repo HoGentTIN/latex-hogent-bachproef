@@ -102,6 +102,12 @@ Om je bachelorproef*voorstel* en poster te compileren zijn er gelijkaardige scri
 
 De resulterende PDF-bestanden vind je in de directory `output/`, die aangemaakt wordt indien nodig.
 
+**Let op!** Als je codefragmenten in je bachelorproef opneemt die opgemaakt worden met `minted`, dan moet je in het hoofddocument zorgen dat de optie `outputdir` van de `minted`-package ingesteld wordt op `../output`. Anders zal de compilatie mislukken. Je kan regel 24 uit commentaar halen (en regel 21 uitcommentariëren of verwijderen):
+
+```latex
+\usepackage[section,outputdir=../output]{minted}
+```
+
 De eerste keer dat je dit script uitvoert, zal het compilatieproces langer duren: eerst moet immers een Docker-image gebouwd worden waarin de nodige packages geïnstalleerd zijn. Een eerste LaTeX-compilatie duurt ook vaak langer dan de volgende.
 
 ### Automatische compilatie op Github Actions

@@ -132,3 +132,4 @@ sympy-plots-for-*.tex/
 
 # output directory - see make_thesis.sh
 output/
+out/
