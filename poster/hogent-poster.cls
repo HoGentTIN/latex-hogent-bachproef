@@ -20,7 +20,7 @@
 
 \RequirePackage[xetex,footskip=12cm]{geometry}
 \RequirePackage[xetex]{graphicx}
-\graphicspath{{figures/}} % Location of the graphics files
+\graphicspath{{graphics/}} % Location of the graphics files
 
 \RequirePackage[xetex,plainpages=false,breaklinks]{hyperref}
 \RequirePackage{booktabs} % Top and bottom rules for table
@@ -46,52 +46,52 @@
 \newcount\yscale
 
 \DeclareOption{a0b}{
-\anullbtrue
-\xkoord=2592 % big points (1 bp=1/72 inch)
-\ykoord=3666 % big points (1 bp=1/72 inch)
-\xscale=23
-\yscale=23
+  \anullbtrue
+  \xkoord=2592 % big points (1 bp=1/72 inch)
+  \ykoord=3666 % big points (1 bp=1/72 inch)
+  \xscale=23
+  \yscale=23
 }
 \DeclareOption{a0}{
-\anulltrue\anullbfalse
-\xkoord=2380 % big points (1 bp=1/72 inch)
-\ykoord=3368 % big points (1 bp=1/72 inch)
-\xscale=25
-\yscale=25
+  \anulltrue\anullbfalse
+  \xkoord=2380 % big points (1 bp=1/72 inch)
+  \ykoord=3368 % big points (1 bp=1/72 inch)
+  \xscale=25
+  \yscale=25
 }
 \DeclareOption{a1}{
-\aeinstrue\anullbfalse
-\xkoord=1684 % big points (1 bp=1/72 inch)
-\ykoord=2380 % big points (1 bp=1/72 inch)
-\xscale=3
-\yscale=3
+  \aeinstrue\anullbfalse
+  \xkoord=1684 % big points (1 bp=1/72 inch)
+  \ykoord=2380 % big points (1 bp=1/72 inch)
+  \xscale=3
+  \yscale=3
 }
 \DeclareOption{a2}{
-\azweitrue\anullbfalse
-\xkoord=1190 % big points (1 bp=1/72 inch)
-\ykoord=1684 % big points (1 bp=1/72 inch)
-\xscale=4
-\yscale=4
+  \azweitrue\anullbfalse
+  \xkoord=1190 % big points (1 bp=1/72 inch)
+  \ykoord=1684 % big points (1 bp=1/72 inch)
+  \xscale=4
+  \yscale=4
 
 }
 \DeclareOption{a3}{
-\adreitrue\anullbfalse
-\xkoord=842  % big points (1 bp=1/72 inch)
-\ykoord=1190 % big points (1 bp=1/72 inch)
-\xscale=6
-\yscale=6
+  \adreitrue\anullbfalse
+  \xkoord=842  % big points (1 bp=1/72 inch)
+  \ykoord=1190 % big points (1 bp=1/72 inch)
+  \xscale=6
+  \yscale=6
 }
 \DeclareOption{landscape}{
-\portraitfalse
+  \portraitfalse
 }
 \DeclareOption{portrait}{
-\portraittrue
+  \portraittrue
 }
 \DeclareOption{preview}{
-\previewtrue
+  \previewtrue
 }
 \DeclareOption{final}{
-\previewfalse
+  \previewfalse
 }
 
 % Select a language: add option english or dutch, default=dutch
@@ -173,45 +173,45 @@
 %%============================================================================
 
 \ifanullb
-   \setlength{\paperwidth}{129.3cm} %% 36 * sqrt(2) in
-   \setlength{\paperheight}{91.4cm} %% 36 in
-   \setlength{\textwidth}{119.3cm} %% paperwidth - (5cm + 5cm)
-   \setlength{\textheight}{81.4cm} %% paperheight - (5cm + 5cm)
+  \setlength{\paperwidth}{129.3cm} %% 36 * sqrt(2) in
+  \setlength{\paperheight}{91.4cm} %% 36 in
+  \setlength{\textwidth}{119.3cm} %% paperwidth - (5cm + 5cm)
+  \setlength{\textheight}{81.4cm} %% paperheight - (5cm + 5cm)
 \else\ifanull
-        \setlength{\paperwidth}{118.9cm}
-        \setlength{\paperheight}{84.1cm}
-        \setlength{\textwidth}{108.9cm} %% paperwidth - (5cm + 5cm)
-        \setlength{\textheight}{74.1cm} %% paperheight - (5cm + 5cm)
-     \else\ifaeins
-             \setlength{\paperwidth}{84.1cm}
-             \setlength{\paperheight}{59.4cm}
-             \setlength{\textwidth}{74.1cm}
-             \setlength{\textheight}{49.4cm}
-          \else\ifazwei
-                  \setlength{\paperwidth}{59.4cm}
-                  \setlength{\paperheight}{42.0cm}
-                  \setlength{\textwidth}{53.4cm}
-                  \setlength{\textheight}{36.0cm}
-               \else\ifadrei
-                       \setlength{\paperwidth}{42.0cm}
-                       \setlength{\paperheight}{29.7cm}
-                       \setlength{\textwidth}{37.0cm}
-                       \setlength{\textheight}{24.7cm}
-                    \else\relax
-                    \fi
-               \fi
-          \fi
-     \fi
+    \setlength{\paperwidth}{118.9cm}
+    \setlength{\paperheight}{84.1cm}
+    \setlength{\textwidth}{108.9cm} %% paperwidth - (5cm + 5cm)
+    \setlength{\textheight}{74.1cm} %% paperheight - (5cm + 5cm)
+  \else\ifaeins
+      \setlength{\paperwidth}{84.1cm}
+      \setlength{\paperheight}{59.4cm}
+      \setlength{\textwidth}{74.1cm}
+      \setlength{\textheight}{49.4cm}
+    \else\ifazwei
+        \setlength{\paperwidth}{59.4cm}
+        \setlength{\paperheight}{42.0cm}
+        \setlength{\textwidth}{53.4cm}
+        \setlength{\textheight}{36.0cm}
+      \else\ifadrei
+          \setlength{\paperwidth}{42.0cm}
+          \setlength{\paperheight}{29.7cm}
+          \setlength{\textwidth}{37.0cm}
+          \setlength{\textheight}{24.7cm}
+        \else\relax
+        \fi
+      \fi
+    \fi
+  \fi
 \fi
 
 \ifportrait
-   \newdimen\tausch
-   \setlength{\tausch}{\paperwidth}
-   \setlength{\paperwidth}{\paperheight}
-   \setlength{\paperheight}{\tausch}
-   \setlength{\tausch}{\textwidth}
-   \setlength{\textwidth}{\textheight}
-   \setlength{\textheight}{\tausch}
+  \newdimen\tausch
+  \setlength{\tausch}{\paperwidth}
+  \setlength{\paperwidth}{\paperheight}
+  \setlength{\paperheight}{\tausch}
+  \setlength{\tausch}{\textwidth}
+  \setlength{\textwidth}{\textheight}
+  \setlength{\textheight}{\tausch}
 \else\relax
 \fi
 
@@ -231,13 +231,13 @@
 \setlength{\topmargin}{2.5 cm}
 \setlength{\oddsidemargin}{2.5 cm}
 \else\ifazwei
-\setlength{\topmargin}{3 cm}
-\setlength{\oddsidemargin}{3 cm}
+  \setlength{\topmargin}{3 cm}
+  \setlength{\oddsidemargin}{3 cm}
 \else
-\setlength{\topmargin}{5 cm} %% 3 cm for unprintable at top
-                             %% (landscape) + 2 cm from border
-\setlength{\oddsidemargin}{5 cm} %% 3 cm for unprintable at left
-                                 %% (landscape) + 2 cm from border
+  \setlength{\topmargin}{5 cm} %% 3 cm for unprintable at top
+  %% (landscape) + 2 cm from border
+  \setlength{\oddsidemargin}{5 cm} %% 3 cm for unprintable at left
+  %% (landscape) + 2 cm from border
 \fi
 \setlength{\topskip}{0 cm}
 
@@ -256,46 +256,46 @@
 
 \renewcommand{\@maketitle}{%
   \begingroup
-    \raggedright\titlefont\color{title}\Large
-    \textsc{\@course\ \@studyprogramme\ (\@academicyear)}
+  \raggedright\titlefont\color{title}\Large
+  \textsc{\@course\ \@studyprogramme\ (\@academicyear)}
   \endgroup
 
   \begingroup
+  \medskip
+  \raggedright\titlefont\color{title}\VeryHuge\@title
+
+  \if\@subtitle\@empty\else
+    \raggedright\titlefont\Huge\textit{\@subtitle}
+  \fi
+  \endgroup
+
+  \begingroup
+  \bigskip
+  \raggedright\huge\textbf{\@author}
+
+  \if\@email\@empty\else
     \medskip
-    \raggedright\titlefont\color{title}\VeryHuge\@title
-
-    \if\@subtitle\@empty\else
-      \raggedright\titlefont\Huge\textit{\@subtitle}
-    \fi
+    \raggedright\@email
+  \fi
   \endgroup
 
   \begingroup
-    \bigskip
-    \raggedright\huge\textbf{\@author}
+  \if\@supervisor\@empty\else
+    \medskip
+    \raggedright\Large Promotor: \@supervisor
+  \fi
 
-    \if\@email\@empty\else
-      \medskip
-      \raggedright\@email
-    \fi
+  \if\@cosupervisor\@empty\else
+    \medskip
+    \raggedright\Large Co-promotor: \@cosupervisor
+  \fi
   \endgroup
 
   \begingroup
-    \if\@supervisor\@empty\else
-      \medskip
-      \raggedright\Large Promotor: \@supervisor
-    \fi
-
-    \if\@cosupervisor\@empty\else
-      \medskip
-      \raggedright\Large Co-promotor: \@cosupervisor
-    \fi
+  \bigskip
+  \raggedright\Large\@institution
   \endgroup
 
-  \begingroup
-    \bigskip
-    \raggedright\Large\@institution
-  \endgroup
-   
   \bigskip
 }
 
@@ -324,12 +324,12 @@
   \fancyfoot[L]{}%
   \fancyfoot[C]{}
   \fancyfoot[R]{%
-  \begin{tikzpicture}[remember picture, overlay]
-    \node [anchor=south east, shift={(-\the\wd\logopart, \the\wd\logopart)}, inner sep=0, outer sep=0] (logo) at (current page.south east)%
-    {%
-      \includegraphics[height=\the\ht\logopart]{hogent_logo}%
-    };%
-  \end{tikzpicture}
+    \begin{tikzpicture}[remember picture, overlay]
+      \node [anchor=south east, shift={(-\the\wd\logopart, \the\wd\logopart)}, inner sep=0, outer sep=0] (logo) at (current page.south east)%
+      {%
+        \includegraphics[height=\the\ht\logopart]{hogent_logo}%
+      };%
+    \end{tikzpicture}
   }%
 }
 
@@ -342,7 +342,7 @@
 
 \newfontfamily\montserratblack{Montserrat}[BoldFont={Montserrat Black}]
 \newfontfamily\montserratextrabold{Montserrat}%
-    [BoldFont={Montserrat ExtraBold}]
+[BoldFont={Montserrat ExtraBold}]
 
 \def\titlefont{\montserratblack\bfseries}
 \def\tocfont{\montserratblack}
@@ -352,7 +352,7 @@
 \setmonofont{Fira Code}
 
 \renewcommand{\tiny}{\fontsize{12}{14}\selectfont}
-\renewcommand{\scriptsize}{\fontsize{14.4}{18}\selectfont}   
+\renewcommand{\scriptsize}{\fontsize{14.4}{18}\selectfont}
 \renewcommand{\footnotesize}{\fontsize{17.28}{22}\selectfont}
 \renewcommand{\small}{\fontsize{20.74}{25}\selectfont}
 \renewcommand{\normalsize}{\fontsize{24.88}{30}\selectfont}
@@ -379,27 +379,27 @@
 \normalsize
 
 \AtBeginDocument{
-\ifanullb
-   \ifportrait\special{papersize=91.4cm,129.3cm}\else\special{papersize=129.3cm,91.4cm}\fi
-\else\ifanull
-        \ifportrait\special{papersize=83.96cm,118.82cm}\else\special{papersize=118.82cm,83.96cm}\fi
-     \else\ifaeins
-             \ifportrait\special{papersize=59.4cm,83.96cm}\else\special{papersize=83.96cm,59.4cm}\fi
-          \else\ifazwei
-                  \ifportrait\special{papersize=41.98cm,59.4cm}\else\special{papersize=59.4cm,41.98cm}\fi
-               \else\ifadrei
-                      \ifpreview
-                       \ifportrait\special{papersize=29.7cm,41.35cm}\else\special{papersize=41.98cm,29.0cm}\fi
-                      \else
-                       \ifportrait\special{papersize=29.7cm,41.98cm}\else\special{papersize=41.98cm,29.7cm}\fi
-                      \fi
-                    \else\relax
-                    \fi
-               \fi
+  \ifanullb
+    \ifportrait\special{papersize=91.4cm,129.3cm}\else\special{papersize=129.3cm,91.4cm}\fi
+  \else\ifanull
+      \ifportrait\special{papersize=83.96cm,118.82cm}\else\special{papersize=118.82cm,83.96cm}\fi
+    \else\ifaeins
+        \ifportrait\special{papersize=59.4cm,83.96cm}\else\special{papersize=83.96cm,59.4cm}\fi
+      \else\ifazwei
+          \ifportrait\special{papersize=41.98cm,59.4cm}\else\special{papersize=59.4cm,41.98cm}\fi
+        \else\ifadrei
+            \ifpreview
+              \ifportrait\special{papersize=29.7cm,41.35cm}\else\special{papersize=41.98cm,29.0cm}\fi
+            \else
+              \ifportrait\special{papersize=29.7cm,41.98cm}\else\special{papersize=41.98cm,29.7cm}\fi
+            \fi
+          \else\relax
           \fi
-     \fi
-\fi
-\pagestyle{empty}}
+        \fi
+      \fi
+    \fi
+  \fi
+  \pagestyle{empty}}
 
 
 %% -----------------------------------------------------------------------------
@@ -410,28 +410,28 @@
 
 %% Section headers
 \titleformat{\section}
-    {\Large\titlefont}
-    {\bfseries\thesection.\ }
-    {0pt}
-    {\bfseries\color{title}}
+{\Large\titlefont}
+{\bfseries\thesection.\ }
+{0pt}
+{\bfseries\color{title}}
 
 %% Sections are preceded by an empty line.
 \titlespacing{\section}{0pt}{\baselineskip}{3pt}
 
 %% Subsection headers
 \titleformat{\subsection}
-    {\large\titlefont}
-    {\bfseries\thesubsection.\ }
-    {1.8pt}
-    {\bfseries}
+{\large\titlefont}
+{\bfseries\thesubsection.\ }
+{1.8pt}
+{\bfseries}
 \titlespacing{\subsection}{0pt}{.75\baselineskip}{3pt}
 
 %% Subsubsection headers
 \titleformat{\subsubsection}
-    {\normalsize\titlefont}
-    {\bfseries\thesubsubsection.\ }
-    {1.8pt}
-    {\bfseries}
+{\normalsize\titlefont}
+{\bfseries\thesubsubsection.\ }
+{1.8pt}
+{\bfseries}
 \titlespacing{\subsubsection}{0pt}{.5\baselineskip}{3pt}
 
 %% -----------------------------------------------------------------------------
@@ -450,19 +450,19 @@
     \setlength{\rightmargin}{\leftmargin}}%
   \item\relax\normalfont\itshape
 }{%
-  
+
   \if\@specialisation\@empty\else
     \medskip
     \normalfont\noindent\if@english Specialisation: \else Keuzerichting: \fi
     \@specialisation
   \fi
-  
+
   \if\@keywords\@empty\else
     \medskip
     \normalfont\noindent\if@english Keywords: \else Sleutelwoorden: \fi
     \@keywords
   \fi
-  
+
   \if\@projectrepo\@empty\else
     \medskip
     \normalfont\noindent\if@english Source code: \else Broncode: \fi
