@@ -15,7 +15,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \def\@classname{hogent-article}
 \ProvidesClass{hogent-article}
-  [2022/09/01 v2.1 Artikel voor gebruik in de opleiding toegepaste informatica aan HOGENT]
+[2022/09/01 v2.1 Artikel voor gebruik in de opleiding toegepaste informatica aan HOGENT]
 \LoadClass[10pt,a4paper]{article}
 
 %% Check compiler - issue an error if XeLaTeX was not used
@@ -24,8 +24,8 @@
 \ifxetex
 \else
   \ClassError{\@classname}
-    {Incompatible LaTeX compiler was used!}
-    {Please use XeLaTeX.}
+  {Incompatible LaTeX compiler was used!}
+  {Please use XeLaTeX.}
 \fi
 
 %% -----------------------------------------------------------------------------
@@ -58,13 +58,13 @@
 %% Dutch is the default language, but this can be changed to English by
 %% specifying the 'english' option to the document class
 \if@english
-    \RequirePackage[english]{babel}
-    \RequirePackage[backend=biber,style=apa]{biblatex}
-    \DeclareLanguageMapping{english}{british-apa}
+  \RequirePackage[english]{babel}
+  \RequirePackage[backend=biber,style=apa]{biblatex}
+  \DeclareLanguageMapping{english}{british-apa}
 \else
-    \RequirePackage[dutch]{babel}
-    \RequirePackage[style=apa,backend=biber]{biblatex}
-    \DeclareLanguageMapping{dutch}{dutch-apa}
+  \RequirePackage[dutch]{babel}
+  \RequirePackage[style=apa,backend=biber]{biblatex}
+  \DeclareLanguageMapping{dutch}{dutch-apa}
 \fi
 
 %% -----------------------------------------------------------------------------
@@ -128,14 +128,14 @@
 \newcommand{\@checkvariables}{
   \ifnum\hga@author@cnt=0
     \ClassError{\@classname}
-      {No authors defined!}
-      {Use the 'author' command to define at least one author.}
+    {No authors defined!}
+    {Use the 'author' command to define at least one author.}
   \fi
   \ifx\@title\@empty{%
-    \ClassError{\@classname}
+      \ClassError{\@classname}
       {Title is undefined!}
       {Use the 'title' command to define it.}
-  }\fi
+    }\fi
 
   \ifnum\hga@email@cnt=0
     \ClassWarning{\@classname}{No e-mail addresses specified! You should specify an e-mail address for each author with the 'email' command}
@@ -234,7 +234,7 @@
 
 \newfontfamily\montserratblack{Montserrat}[BoldFont={Montserrat Black}]
 \newfontfamily\montserratextrabold{Montserrat}%
-    [BoldFont={Montserrat ExtraBold}]
+[BoldFont={Montserrat ExtraBold}]
 
 \def\titlefont{\montserratblack\bfseries}
 \def\tocfont{\montserratblack}
@@ -270,50 +270,50 @@
   \endgroup
 
   \begingroup
-    \raggedright\titlefont\color{title}\LARGE\@title\@addpunct{.}
+  \raggedright\titlefont\color{title}\LARGE\@title\@addpunct{.}
   \endgroup
 
   \begingroup
-    \medskip
-    \raggedright\titlefont\color{title}\large
-    \ifx\@course\@empty
-      \ifx\@academicyear\@empty\today\else\@academicyear\fi
-    \else
-      \@course
-      \ifx\@academicyear\@empty, \today\else, \@academicyear\fi
-    \fi
+  \medskip
+  \raggedright\titlefont\color{title}\large
+  \ifx\@course\@empty
+    \ifx\@academicyear\@empty\today\else\@academicyear\fi
+  \else
+    \@course
+    \ifx\@academicyear\@empty, \today\else, \@academicyear\fi
+  \fi
   \endgroup
 
   \bigskip
 
   \begingroup
-    \raggedright\Large\author@list
+  \raggedright\Large\author@list
 
-    \medskip
+  \medskip
   \endgroup
 
   \begingroup
-    \small
-    \ifnum\hga@email@cnt>0
-      \raggedright E-mail: \email@list
-    \fi
+  \small
+  \ifnum\hga@email@cnt>0
+    \raggedright E-mail: \email@list
+  \fi
 
-    \ifx\@projectrepo\@empty\else
-      Project repo: \url{\@projectrepo}
-    \fi
+  \ifx\@projectrepo\@empty\else
+    Project repo: \url{\@projectrepo}
+  \fi
 
-    \ifx\@supervisor\@empty\else
-      \ifx\@supervisor@role\@empty
-        \if@english Supervisor: \else Begeleider: \fi
-      \else
-        \@supervisor@role:
-      \fi
-      \@supervisor
+  \ifx\@supervisor\@empty\else
+    \ifx\@supervisor@role\@empty
+      \if@english Supervisor: \else Begeleider: \fi
+    \else
+      \@supervisor@role:
     \fi
+    \@supervisor
+  \fi
 
-    \medskip
-    \hrule
-    \medskip
+  \medskip
+  \hrule
+  \medskip
   \endgroup
 }
 
@@ -340,7 +340,7 @@
 \newcommand{\makeabstract}{%
   \maketitle%
   \begin{oldabstract}%
-  \protecting{\BODY}%
+    \protecting{\BODY}%
   \end{oldabstract}%
   \begingroup
   \ifx\@specialisation\@empty\else
@@ -362,9 +362,9 @@
 \RenewEnviron{abstract}{%
   \if@twocolumn
     \twocolumn[%
-    \begin{@twocolumnfalse}
-      \makeabstract
-    \end{@twocolumnfalse}]
+      \begin{@twocolumnfalse}
+        \makeabstract
+      \end{@twocolumnfalse}]
   \else
     \makeabstract
   \fi
@@ -378,10 +378,10 @@
 
 %% Section headers
 \titleformat{\section}
-    {\Large\titlefont}
-    {\bfseries\thesection.\ }
-    {0pt}
-    {\bfseries\color{title}}
+{\Large\titlefont}
+{\bfseries\thesection.\ }
+{0pt}
+{\bfseries\color{title}}
 
 %% Sections are preceded by an empty line.
 \titlespacing{\section}{0pt}{\baselineskip}{3pt}
@@ -389,36 +389,36 @@
 %% In the table of contents, section names are followed by a line of dots 8pt
 %% apart
 \titlecontents{section}[1.8em]
-  {\tocfont}
-  {\contentslabel[\thecontentslabel]{1.8em}}
-  {}
-  {\titlerule*[8pt]{.}\ \thecontentspage}
+{\tocfont}
+{\contentslabel[\thecontentslabel]{1.8em}}
+{}
+{\titlerule*[8pt]{.}\ \thecontentspage}
 
 %% Subsection headers
 \titleformat{\subsection}
-    {\large\titlefont}
-    {\bfseries\thesubsection.\ }
-    {1.8pt}
-    {\bfseries}
+{\large\titlefont}
+{\bfseries\thesubsection.\ }
+{1.8pt}
+{\bfseries}
 \titlespacing{\subsection}{0pt}{.75\baselineskip}{3pt}
 \titlecontents{subsection}[3.6em]
-  {\tocfont}
-  {\contentslabel[\thecontentslabel]{1.8em}}
-  {}
-  {\hfill\thecontentspage}
+{\tocfont}
+{\contentslabel[\thecontentslabel]{1.8em}}
+{}
+{\hfill\thecontentspage}
 
 %% Subsubsection headers
 \titleformat{\subsubsection}
-    {\normalsize\titlefont}
-    {\bfseries\thesubsubsection.\ }
-    {1.8pt}
-    {\bfseries}
+{\normalsize\titlefont}
+{\bfseries\thesubsubsection.\ }
+{1.8pt}
+{\bfseries}
 \titlespacing{\subsubsection}{0pt}{.5\baselineskip}{3pt}
 \titlecontents{subsubsection}[5.4em]
-  {\tocfont}
-  {\contentslabel[\thecontentslabel]{2.4em}}
-  {}
-  {\hfill\thecontentspage}
+{\tocfont}
+{\contentslabel[\thecontentslabel]{2.4em}}
+{}
+{\hfill\thecontentspage}
 
 %% -----------------------------------------------------------------------------
 %% Page header and footer
@@ -458,7 +458,7 @@
 %% -----------------------------------------------------------------------------
 %% Packages for general use
 \RequirePackage{graphicx}
-\graphicspath{{img/}}
+\graphicspath{{graphics/}}
 \RequirePackage{amsmath}
 \RequirePackage{eurosym}
 \RequirePackage{url}
