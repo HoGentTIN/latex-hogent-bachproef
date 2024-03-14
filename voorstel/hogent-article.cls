@@ -458,7 +458,7 @@
 %% -----------------------------------------------------------------------------
 %% Packages for general use
 \RequirePackage{graphicx}
-\graphicspath{{graphics/}}
+\graphicspath{{../graphics/}}
 \RequirePackage{amsmath}
 \RequirePackage{eurosym}
 \RequirePackage{url}

@@ -20,7 +20,7 @@
 
 \RequirePackage[xetex,footskip=12cm]{geometry}
 \RequirePackage[xetex]{graphicx}
-\graphicspath{{graphics/}} % Location of the graphics files
+\graphicspath{{../graphics/}} % Location of the graphics files
 
 \RequirePackage[xetex,plainpages=false,breaklinks]{hyperref}
 \RequirePackage{booktabs} % Top and bottom rules for table
