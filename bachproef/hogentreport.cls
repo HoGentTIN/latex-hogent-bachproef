@@ -221,6 +221,7 @@
 \usetikzlibrary{positioning}
 \RequirePackage{standalone}
 \RequirePackage{wrapfig}
+\graphicspath{{../graphics/}}
 
 % Page layout & document structure
 \RequirePackage{appendix}
@@ -363,7 +364,7 @@
         \setsansfont{Montserrat}
     }{%
         \newfontfamily\titlefont{Montserrat}[
-            Path = fonts/Montserrat/,
+            Path = ../fonts/Montserrat/,
             Extension = .otf,
             UprightFont = *-Black, %% Force black
             BoldFont=*-Black,
@@ -371,7 +372,7 @@
             BoldItalicFont= *-BlackItalic]
 
         \newfontfamily\subtitlefont{Montserrat}[
-            Path = fonts/Montserrat/,
+            Path = ../fonts/Montserrat/,
             Extension = .otf,
             UprightFont = *-ExtraBold, %% Force extra bold
             BoldFont=*-ExtraBold,
@@ -379,7 +380,7 @@
             BoldItalicFont= *-ExtraBoldItalic]
 
         \newfontfamily\tocfont{Montserrat}[
-            Path = fonts/Montserrat/,
+            Path = ../fonts/Montserrat/,
             Extension = .otf,
             UprightFont = *-Regular,
             BoldFont=*-Bold,
@@ -387,7 +388,7 @@
             BoldItalicFont= *-BoldItalic]
 
         \setmainfont{Montserrat}[
-            Path = fonts/Montserrat/,
+            Path = ../fonts/Montserrat/,
             Extension = .otf,
             UprightFont = *-Regular,
             BoldFont=*-Bold,
@@ -437,7 +438,7 @@
 
 %% Use the length of the 'HO' part of the logo to set the padding of the logo
 \newsavebox{\logopart}
-\savebox{\logopart}{\includegraphics[height=2cm]{graphics/logopart}}
+\savebox{\logopart}{\includegraphics[height=2cm]{logopart}}
 
 %% We use A4 paper with slightly smaller margins than the default (scale = 0.7)
 \geometry{a4paper,hscale=0.75,vscale=0.8,headheight=14pt,asymmetric}
