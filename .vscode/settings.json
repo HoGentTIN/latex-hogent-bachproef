@@ -1,0 +1,122 @@
+{
+  "latex-workshop.latex.outDir": "output",
+  "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex× 2",
+            "tools": [
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "xelatex ➞ biber ➞ xelatex× 2",
+            "tools": [
+                "xelatex",
+                "biber",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "args": [
+                "-f",
+                "-xelatex",
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "command": "latexmk",
+            "env": {},
+            "name": "latexmk"
+        },
+        {
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-shell-escape",
+                "-output-directory=%OUTDIR%",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "command": "xelatex",
+            "env": {},
+            "name": "xelatex"
+        },
+        {
+            "args": [
+                "--input-directory=%OUTDIR%",
+                "--output-directory=%OUTDIR%",
+                "%DOCFILE%"
+            ],
+            "command": "biber",
+            "env": {},
+            "name": "biber"
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.recipe.default": "first",
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.clean.method": "glob",
+    "latex-workshop.latex.clean.fileTypes": [
+        "**/*.acn",
+        "**/*.acr",
+        "**/*.alg",
+        "**/*.aux",
+        "**/*.bbl",
+        "**/*.bcf",
+        "**/*.bib.bak",
+        "**/*.blg",
+        "**/*.dvi",
+        "**/*.fdb_latexmk",
+        "**/*.fls",
+        "**/*.glg",
+        "**/*.glo",
+        "**/*.gls",
+        "**/*.glsdefs",
+        "**/*.idx",
+        "**/*.ind",
+        "**/*.ist",
+        "**/*.lof",
+        "**/*.lol",
+        "**/*.lop",
+        "**/*.lot",
+        "**/*.nav",
+        "**/*.out",
+        "**/*.run.xml",
+        "**/*.snm",
+        "**/*.synctex",
+        "**/*.synctex(busy)",
+        "**/*.synctex.gz",
+        "**/*.synctex.gz(busy)",
+        "**/*.tdo",
+        "**/*.toc",
+        "**/*.xdv",
+        "**/_minted-*/"
+    ],
+    "latex-workshop.bibtex-format.sort.enabled": true,
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    "latex-workshop.latex.autoBuild.interval": 30000,
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "latex-workshop.latex.magic.args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-outputdir=%OUTDIR%",
+        "-file-line-error",
+        "--shell-escape",
+        "%DOC%"
+    ],
+}
