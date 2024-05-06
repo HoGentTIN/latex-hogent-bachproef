@@ -1,5 +1,5 @@
 {
-  "latex-workshop.latex.outDir": "output",
+  "latex-workshop.latex.outDir": "../output",
   "latex-workshop.latex.recipes": [
         {
             "name": "xelatex× 2",
