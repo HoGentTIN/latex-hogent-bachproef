@@ -245,8 +245,6 @@
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{url}
 
-\captionsetup[figure]{labelformat=parens, labelsep=newline}
-
 % Typography & Symbols
 \RequirePackage{eurosym}
 \RequirePackage{microtype}
