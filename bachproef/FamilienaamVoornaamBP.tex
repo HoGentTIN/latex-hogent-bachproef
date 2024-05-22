@@ -18,34 +18,19 @@
 
 %% For source code highlighting, requires pygments to be installed
 %% Compile with the -shell-escape flag!
-\usepackage[section]{minted}
+%% \usepackage[chapter]{minted}
 %% If you compile with the make_thesis.{bat,sh} script, use the following
 %% import instead:
-%% \usepackage[section,outputdir=../output]{minted}
+\usepackage[chapter,outputdir=../output]{minted}
 \usemintedstyle{solarized-light}
-\definecolor{bg}{RGB}{253,246,227} %% Set the background color of the codeframe
 
-%% Change this line to edit the line numbering style:
-\renewcommand{\theFancyVerbLine}{\ttfamily\scriptsize\arabic{FancyVerbLine}}
-
-%% Macro definition to load external java source files with \javacode{filename}:
-\newmintedfile[javacode]{java}{
-    bgcolor=bg,
-    fontfamily=tt,
-    linenos=true,
-    numberblanklines=true,
-    numbersep=5pt,
-    gobble=0,
-    framesep=2mm,
-    funcnamehighlighting=true,
-    tabsize=4,
-    obeytabs=false,
-    breaklines=true,
-    mathescape=false
-    samepage=false,
-    showspaces=false,
-    showtabs =false,
-    texcl=false,
+%% Formatting for minted environments.
+\setminted{%
+    autogobble,
+    frame=lines,
+    breaklines,
+    linenos,
+    tabsize=4
 }
 
 % Other packages not already included can be imported here
@@ -116,7 +101,7 @@
 % If you included tables and/or source code listings, uncomment the appropriate
 % lines.
 %\listoftables
-%\listoflistings
+\listoflistings
 
 % Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
 % hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
