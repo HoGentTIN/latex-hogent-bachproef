@@ -4,7 +4,7 @@
 docker build -t bpimg -f docker/Dockerfile .
 
 @REM build the proposal
-docker run --rm -v %cd%:/bp bpimg sh /bp/docker/render_thesis.sh poster
+docker run --rm -v "%cd%:/bp" bpimg sh /bp/docker/render_thesis.sh poster
 
 @REM keep window open after run
 pause
