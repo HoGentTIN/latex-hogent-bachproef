@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # utility batch file to render the tex file to a pdf
 
 set -o nounset
